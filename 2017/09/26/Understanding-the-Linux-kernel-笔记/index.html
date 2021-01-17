@@ -4,15 +4,27 @@
   <meta charset="utf-8">
   
   
-  <title>FranksMa BLOG</title>
+  <title>Understanding the Linux kernel 笔记 | FranksMa BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FranksMa BLOG">
-<meta property="og:url" content="https://franksma.github.io/index.html">
+  <meta name="description" content="用户态&amp;内核态#解析#经常会提到 用户态  内核态 用户空间内核空间这几个概念，但是对其理解并不深刻，只有一个感性的认识，知其然，不知其所以然。 当然是写一点我自己的理解啦～～下面这个程序是进行归并排序，数据量为5000000当前排序操作不涉及外部存储，不存在系统调用，通过top 命令可以看到,cpu 99.7 us。  其中，第一项99.7 us（user 的缩写）就是 CPU 消耗在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Understanding the Linux kernel 笔记">
+<meta property="og:url" content="https://franksma.github.io/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="FranksMa BLOG">
+<meta property="og:description" content="用户态&amp;内核态#解析#经常会提到 用户态  内核态 用户空间内核空间这几个概念，但是对其理解并不深刻，只有一个感性的认识，知其然，不知其所以然。 当然是写一点我自己的理解啦～～下面这个程序是进行归并排序，数据量为5000000当前排序操作不涉及外部存储，不存在系统调用，通过top 命令可以看到,cpu 99.7 us。  其中，第一项99.7 us（user 的缩写）就是 CPU 消耗在">
 <meta property="og:locale">
+<meta property="og:image" content="https://franksma.github.io/media/15037985050367.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15037985410929.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15037982776435.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15038044263713.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15038044465989.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15038053494027.jpg">
+<meta property="article:published_time" content="2017-09-25T16:27:49.000Z">
+<meta property="article:modified_time" content="2021-01-17T16:28:35.113Z">
 <meta property="article:author" content="TIANQI MA">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://franksma.github.io/media/15037985050367.jpg">
   
     <link rel="alternate" href="/atom.xml" title="FranksMa BLOG" type="application/atom+xml">
   
@@ -69,137 +81,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Rust-学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2021-01-17T15:31:51.000Z" itemprop="datePublished">2021-01-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rust 学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <div class="toc">
-
-<!-- toc -->
-
-<ul>
-<li><a href="#1-ji-chu-yu-fa-xue-xi">1 基础语法学习</a><ul>
-<li><a href="#1-1-print">1.1 print</a></li>
-<li><a href="#1-2-display">1.2 display</a></li>
-<li><a href="#1-3-trait">1.3 trait</a></li>
-</ul>
-</li>
-<li><a href="#2-rust-you-xiu-kai-yuan-xiang-mu">2 rust优秀开源项目</a><ul>
-<li><a href="#2-1-xiang-mu-lie-biao">2.1 项目列表</a></li>
-</ul>
-</li>
-</ul>
-<!-- tocstop -->
-
-</div>
-
-<h1><span id="1-ji-chu-yu-fa-xue-xi">1 基础语法学习</span><a href="#1-ji-chu-yu-fa-xue-xi" class="header-anchor">#</a></h1><h2><span id="1-1-print">1.1 print</span><a href="#1-1-print" class="header-anchor">#</a></h2><p><code>&#123;:?&#125;</code> 可进行有格式的打印，是 Debug 宏的实现<br><code>#[derive(Debug)]</code> 如要打印结构体数据 需要添加这个’宏定义’ </p>
-<h2><span id="1-2-display">1.2 display</span><a href="#1-2-display" class="header-anchor">#</a></h2><p>如果系统的 <code>print</code> 无法满足需求, 可自己实现 <code>display</code> 进行格式化打印。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::fmt; <span class="comment">// Import the `fmt` module.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Define a structure named `List` containing a `Vec`.</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span></span>(<span class="built_in">Vec</span>&lt;<span class="built_in">i32</span>&gt;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">impl</span> fmt::Display <span class="keyword">for</span> List &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">fmt</span></span>(&amp;<span class="keyword">self</span>, f: &amp;<span class="keyword">mut</span> fmt::Formatter) -&gt; fmt::<span class="built_in">Result</span> &#123;</span><br><span class="line">        <span class="comment">// Extract the value using tuple indexing,</span></span><br><span class="line">        <span class="comment">// and create a reference to `vec`.</span></span><br><span class="line">        <span class="keyword">let</span> vec = &amp;<span class="keyword">self</span>.<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">write!</span>(f, <span class="string">&quot;[&quot;</span>)?;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Iterate over `v` in `vec` while enumerating the iteration</span></span><br><span class="line">        <span class="comment">// count in `count`.</span></span><br><span class="line">        <span class="keyword">for</span> (count, v) <span class="keyword">in</span> vec.iter().enumerate() &#123;</span><br><span class="line">            <span class="comment">// For every element except the first, add a comma.</span></span><br><span class="line">            <span class="comment">// Use the ? operator to return on errors.</span></span><br><span class="line">            <span class="keyword">if</span> count != <span class="number">0</span> &#123; <span class="built_in">write!</span>(f, <span class="string">&quot;, &quot;</span>)?; &#125;</span><br><span class="line">            <span class="built_in">write!</span>(f, <span class="string">&quot;&#123;&#125;: &#123;&#125;&quot;</span>, count, v)?;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Close the opened bracket and return a fmt::Result value.</span></span><br><span class="line">        <span class="built_in">write!</span>(f, <span class="string">&quot;]&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> v = List(<span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;&#123;&#125;&quot;</span>, v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2><span id="1-3-trait">1.3 trait</span><a href="#1-3-trait" class="header-anchor">#</a></h2><p>trait 实际就是接口的意思。trait 告诉 Rust 编译器某个特定类型拥有可能与其他类型共享的功能。可以通过 trait 以一种抽象的方式定义共享的行为。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明一个 summary 的 trait, 并且有默认的实现</span></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">trait</span> <span class="title">Summary</span></span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">summarize</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">String</span> &#123;</span><br><span class="line">        <span class="built_in">String</span>::from(<span class="string">&quot;(read more...)&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">struct</span> <span class="title">NewsArticle</span></span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> headline: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> location: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> author: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> content: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对 NewsArticle 的 Summary 实现</span></span><br><span class="line"><span class="keyword">impl</span> Summary <span class="keyword">for</span> NewsArticle &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">summarize</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">String</span> &#123;</span><br><span class="line">        <span class="built_in">format!</span>(<span class="string">&quot;&#123;&#125;, by &#123;&#125; (&#123;&#125;)&quot;</span>, <span class="keyword">self</span>.headline, <span class="keyword">self</span>.author, <span class="keyword">self</span>.location)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">struct</span> <span class="title">Tweet</span></span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> username: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> content: <span class="built_in">String</span>,</span><br><span class="line">    <span class="keyword">pub</span> reply: <span class="built_in">bool</span>,</span><br><span class="line">    <span class="keyword">pub</span> retweet: <span class="built_in">bool</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对 Tweet 的 Summary 实现</span></span><br><span class="line"><span class="keyword">impl</span> Summary <span class="keyword">for</span> Tweet &#123;</span><br><span class="line">    <span class="function"><span class="keyword">fn</span> <span class="title">summarize</span></span>(&amp;<span class="keyword">self</span>) -&gt; <span class="built_in">String</span> &#123;</span><br><span class="line">        <span class="built_in">format!</span>(<span class="string">&quot;&#123;&#125;: &#123;&#125;&quot;</span>, <span class="keyword">self</span>.username, <span class="keyword">self</span>.content)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="class"><span class="keyword">struct</span> <span class="title">NewComment</span></span> &#123;</span><br><span class="line">    <span class="keyword">pub</span> author: <span class="built_in">String</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不实现自己的 Summary，使用默认实现</span></span><br><span class="line"><span class="keyword">impl</span> Summary <span class="keyword">for</span> NewComment &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 trait 作为参数，参数对象必须有 trait 的实现</span></span><br><span class="line"><span class="comment">// 可以传递任何 NewsArticle 或 Tweet 的实例来调用 notify。</span></span><br><span class="line"><span class="comment">// 任何用其它如 String 或 i32 的类型调用该函数的代码都不能编译，因为它们没有实现 Summary。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">notify</span></span>(item: <span class="keyword">impl</span> Summary) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Breaking news &#123;&#125;&quot;</span>,item.summarize());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> tweet = Tweet &#123;</span><br><span class="line">        username: <span class="built_in">String</span>::from(<span class="string">&quot;horse_ebooks&quot;</span>),</span><br><span class="line">        content: <span class="built_in">String</span>::from(<span class="string">&quot;of course, as you probably already know, people&quot;</span>),</span><br><span class="line">        reply: <span class="literal">false</span>,</span><br><span class="line">        retweet: <span class="literal">false</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> article = NewsArticle &#123;</span><br><span class="line">        headline: <span class="built_in">String</span>::from(<span class="string">&quot;hello world&quot;</span>),</span><br><span class="line">        location: <span class="built_in">String</span>::from(<span class="string">&quot;beijing&quot;</span>),</span><br><span class="line">        author: <span class="built_in">String</span>::from(<span class="string">&quot;matianqi&quot;</span>),</span><br><span class="line">        content: <span class="built_in">String</span>::from(<span class="string">&quot;read the book&quot;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;1 new tweet: &#123;&#125;&quot;</span>, tweet.summarize());</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;1 new article: &#123;&#125;&quot;</span>,article.summarize());</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>写法1</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">notify</span></span>(item: <span class="keyword">impl</span> Summary) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Breaking news! &#123;&#125;&quot;</span>, item.summarize());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>写法2</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">notify</span></span>&lt;T: Summary&gt;(item: T) &#123;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;Breaking news! &#123;&#125;&quot;</span>, item.summarize());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>上面的 <code>写法1</code> 和 <code>写法2</code> 具有同样的效果，<code>写法1</code> 叫 <code>impl trait</code> , <code>写法2</code> 叫 <code>trait bound</code> 。</p>
-<p>通过 <code>+</code> 指定多个 <code>trait bound</code></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">notify</span></span>(item: <span class="keyword">impl</span> Summary + Display) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">pub</span> <span class="function"><span class="keyword">fn</span> <span class="title">notify</span></span>&lt;T: Summary + Display&gt;(item: T) &#123;&#125;</span><br></pre></td></tr></table></figure>
-<p>当有多个泛型参数，使用<code>where</code> 从句指定 <code>trait bound</code>的语法。<br>这里实际上是 在where 中 描述了 函数泛型参数 具有哪些trait 。表现更规整。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">some_function</span></span>&lt;T: Display + <span class="built_in">Clone</span>, U: <span class="built_in">Clone</span> + <span class="built_in">Debug</span>&gt;(t: T, u: U) -&gt; <span class="built_in">i32</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">some_function</span></span>&lt;T, U&gt;(t: T, u: U) -&gt; <span class="built_in">i32</span></span><br><span class="line">    <span class="keyword">where</span> T: Display + <span class="built_in">Clone</span>,</span><br><span class="line">          U: <span class="built_in">Clone</span> + <span class="built_in">Debug</span></span><br><span class="line">&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>返回值使用 <code>trait</code></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">returns_summarizable</span></span>() -&gt; <span class="keyword">impl</span> Summary &#123;</span><br><span class="line">    Tweet &#123;</span><br><span class="line">        username: <span class="built_in">String</span>::from(<span class="string">&quot;horse_ebooks&quot;</span>),</span><br><span class="line">        content: <span class="built_in">String</span>::from(<span class="string">&quot;of course, as you probably already know, people&quot;</span>),</span><br><span class="line">        reply: <span class="literal">false</span>,</span><br><span class="line">        retweet: <span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用 trait 求最大值</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里还有另外一种写法是，返回值为 `slice` 中 `T` 的 引用</span></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">largest</span></span>&lt;T: <span class="built_in">PartialOrd</span> + <span class="built_in">Copy</span>&gt;(list: &amp;[T]) -&gt; T &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> largest = list[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> &amp;item <span class="keyword">in</span> list.iter() &#123;</span><br><span class="line">        <span class="keyword">if</span> item &gt; largest &#123;</span><br><span class="line">            largest = item;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    largest</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> number_list = <span class="built_in">vec!</span>[<span class="number">34</span>, <span class="number">50</span>, <span class="number">25</span>, <span class="number">100</span>, <span class="number">65</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = largest(&amp;number_list);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The largest number is &#123;&#125;&quot;</span>, result);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> char_list = <span class="built_in">vec!</span>[<span class="string">&#x27;y&#x27;</span>, <span class="string">&#x27;m&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;q&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> result = largest(&amp;char_list);</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">&quot;The largest char is &#123;&#125;&quot;</span>, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1><span id="2-rust-you-xiu-kai-yuan-xiang-mu">2 rust优秀开源项目</span><a href="#2-rust-you-xiu-kai-yuan-xiang-mu" class="header-anchor">#</a></h1><h2><span id="2-1-xiang-mu-lie-biao">2.1 项目列表</span><a href="#2-1-xiang-mu-lie-biao" class="header-anchor">#</a></h2><p><a target="_blank" rel="noopener" href="https://github.com/tikv/tikv">TiKV</a><br>PingCAP公司开源的TiDB的存储引擎。（我也不知道是啥～～～）</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/mesalock-linux/mesalink">mesalink</a><br>百度安全部，为解决OpenSSL心脏滴血等漏洞，用rust写的SSL实现。（目前好像没人维护了，Maintainer 去了google）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk1cyo4f0001ybwfbuyzbmru" data-title="Rust 学习笔记" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-毕业答辩完成" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" class="article-date">
-  <time class="dt-published" datetime="2018-03-09T14:48:26.000Z" itemprop="datePublished">2018-03-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/">毕业答辩完成</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>今天毕业答辩通过，也算是给研究生时期画了一个句号。</p>
-<p>不自信的讲，我是一个来自二本学校的学生，高考考过两次才考上二本，研究生又考了两次。也算是补回了小学时提前上学的时间。研究生期间，我一直在追赶我的同学，努力去补本科时期留下的坑。并且拓宽自己的认知。</p>
-<p>值得说的是，在红帽实习期间，见识了计算机行业最顶尖的程序员，那群写开源软件的大拿，我和他们的差距还很远。首先是语言，英语是科技行业的通用语言，有良好的英语基础，才能听懂别人在说一个什么样的事情。但是听懂还不够，得领会别人的思想，才能有效的交流。我在研究生期间学习英语的最多时间是看英语论文和查英语资料。这个公司提倡分享和表达，果然是开源世界的第一商业公司。不过北京这边的职位均是测试岗位，时间长了会有点枯燥。有remote的工作，均是开源项目的贡献者。以后有机会可以去试一试。见识一下这个世界的顶级开发者。</p>
-<p>再就是毕业论文的书写。那段时间真的是焦头烂额。论文的方方面面太多了。要兼顾论文的书写和系统的设计与实现。不过好歹最后完成并通过了答辩。</p>
-<p>就我自己来说，做一件事情首先得看好的一面，要开始做起来，里面的坑和难处得经历一遍才能让自己涨经验和知识。所以重要的是坚持。不要有顾虑，没什么大不了的。</p>
-<p>最后要保持身体健康，不要暴饮暴食和醉酒熬夜。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" data-id="ckk1cyo4m0005ybwfbwyjezut" data-title="毕业答辩完成" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Understanding-the-Linux-kernel-笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Understanding-the-Linux-kernel-笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" class="article-date">
   <time class="dt-published" datetime="2017-09-25T16:27:49.000Z" itemprop="datePublished">2017-09-26</time>
@@ -212,8 +94,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/">Understanding the Linux kernel 笔记</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      Understanding the Linux kernel 笔记
     </h1>
   
 
@@ -298,11 +180,23 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          毕业答辩完成
+        
+      </div>
+    </a>
+  
+  
+</nav>
 
   
+</article>
 
 
 </section>
