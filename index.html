@@ -71,6 +71,58 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-算法学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-01-17T17:15:08.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天开始学习算法和设计模式<br>主要学习资料是<br>视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UC5xDNEcvb1vgw3lE21Ack2Q">Hua Hua</a><br>博客 <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/">Huahua’s Tech Road</a></p>
+<h1><span id="20200418">20200418</span><a href="#20200418" class="header-anchor">#</a></h1><p>学习了并查集，看了视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=VJnUwsE4fWA"><br>花花酱 Disjoint-set/Union-find Forest - 刷题找工作 SP1</a> ，  <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/data-structure/sp1-union-find-set/">博客文章</a><br>视频里面主要讲了 find 和 union 两个操作。<br>find 即找到节点的root。 对应路径压缩。 这里面有个点是，路径压缩是在find 的过程中进行的，如果不进行find，则不进行路径压缩。并且具体实现是通过递归实现。具体实现 我不太会用语言描述，主要是对递归的理解不深。<strong>递归算法需要加强下</strong></p>
+<p>union 对应分枝合并，将 rank 少的合并到 rank 多的。</p>
+<p>并查集 这个算法 在 <a target="_blank" rel="noopener" href="https://item.jd.com/11098789.html">算法(第4版) [Algorithms Fourth Edition]</a>  这本书里面是单独的一个章节 还需要详细学习下。。</p>
+<p>参考链接<br><a target="_blank" rel="noopener" href="https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf">https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf</a></p>
+<h1><span id="20200425">20200425</span><a href="#20200425" class="header-anchor">#</a></h1><p>根据数据输入规模估算时间复杂度，从而大概找到对应的算法。<br><img src="/media/15878003520657.jpg"></p>
+<p>树状数组 (没搞懂，找别的资料看一下)</p>
+<p><img src="/media/15878005034918.jpg"></p>
+<p>线程与进程</p>
+<p><img src="/media/15878051796647.jpg"></p>
+<h1><span id="20200512">20200512</span><a href="#20200512" class="header-anchor">#</a></h1><h2><span id="zheng-ze-biao-da-shi-ru-men">正则表达式入门</span><a href="#zheng-ze-biao-da-shi-ru-men" class="header-anchor">#</a></h2><p><code>A.*A</code> 字符串中有两个A<br><code>LLL</code> 字符串中有连续三个L<br><code>A.*A｜LLL</code> 字符串中有两个A 或者连续的三个L<br>正则表达式的优势 是 <em>可读性高</em>。</p>
+<h2><span id="dong-tai-gui-hua-ru-men">动态规划入门</span><a href="#dong-tai-gui-hua-ru-men" class="header-anchor">#</a></h2><p><img src="/media/15892969856518.jpg"><br>这个题目的思路是找到中间节点 如果前i的子串中间节点右边的串在字典中 ，那么前i的子串就是可分割的。<br>整个字符串是否可分割即 i 等于 字符串长度 时是否能找到中间节点右边的串在字典中。<br><img src="/media/15892976091142.jpg"></p>
+<p>这里先是在 s 前加了一个空字符。<br>然后构造了长度为n+1,初始值为0的数组，标记 s 前 i 长度的字符串是否可以被分割。<br>f[0] = 1 的意思是 s 是空字符串。</p>
+<p>两层循环。<br>外层循环是整个问题的规模。即s 的长度。<br>内层循环是子问题，j 从 0 到 i。如果j 右边到i 的字符串在字典中，即 s[0:i]是可以被分割的。就可以跳出内层循环了。<br>逐步扩大求解范围，通过解决子问题，从而得到整体问题的解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk1eltgi000hrf4ah495cyz0" data-title="算法学习笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-Rust-学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
@@ -141,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk1e70py0001o44a00eo9q4v" data-title="Rust 学习笔记" class="article-share-link">Teilen</a>
+      <a data-url="https://franksma.github.io/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk1eltg50001rf4ahhfbh2h0" data-title="Rust 学习笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -185,11 +237,90 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" data-id="ckk1e70q60006o44a4uyidl8p" data-title="毕业答辩完成" class="article-share-link">Teilen</a>
+      <a data-url="https://franksma.github.io/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" data-id="ckk1eltgh000frf4aba62ggl2" data-title="毕业答辩完成" class="article-share-link">Teilen</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-套接字中SO-REUSEPORT和SO-REUSEADDR" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" class="article-date">
+  <time class="dt-published" datetime="2017-09-26T16:22:50.000Z" itemprop="datePublished">2017-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/">套接字中SO_REUSEPORT和SO_REUSEADDR</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="q">Q</span><a href="#q" class="header-anchor">#</a></h1><p>可否多个进程监听同一个端口</p>
+<h1><span id="a">A</span><a href="#a" class="header-anchor">#</a></h1><p>可通过两种方式在同一个端口上监听</p>
+<ul>
+<li>设置 <strong>SO_REUSEPORT</strong></li>
+<li>设置 <strong>SO_REUSEADDR</strong></li>
+</ul>
+<h2><span id="so-reuseport">SO_REUSEPORT</span><a href="#so-reuseport" class="header-anchor">#</a></h2><p>测试代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">SO_REUSEPORT = <span class="number">15</span></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, <span class="number">1</span>)</span><br><span class="line">s.bind((<span class="string">&#x27;&#x27;</span>, <span class="number">10000</span>))</span><br><span class="line">s.listen(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn, addr = s.accept()</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Connected to %d \t addr: %s &quot;</span> % (os.getpid(),addr)</span><br><span class="line">    <span class="comment">#data = conn.recv(1024)</span></span><br><span class="line">    conn.send(<span class="string">&#x27;Connected to &#123;&#125; \n&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
+<p>这个参数在 MacOS 和 Linux 上被设置后，<strong>效果是不一样</strong>的。</p>
+<h3><span id="zai-macos-shang-de-xiao-guo">在 MacOS 上的效果</span><a href="#zai-macos-shang-de-xiao-guo" class="header-anchor">#</a></h3><ul>
+<li>能无冲突的开启两个不同的进程</li>
+</ul>
+<p><img src="/media/15064446169076.jpg"><br>其中<strong>PID 23601</strong> 是第一个开启，<strong>PID 23696</strong> 是第二个开启的。</p>
+<ul>
+<li>使用nc去连接该端口</li>
+</ul>
+<p><img src="/media/15064447308245.jpg"><br>可以看到 只有 <strong>PID 23601</strong> 的socket 被连接<br>只有在kill 掉 <strong>PID 23601</strong> 后 <strong>PID 23696</strong> 才会被连接</p>
+<ul>
+<li>并且可以在不同用户下运行该程序</li>
+</ul>
+<p><img src="/media/15064452264993.jpg"><br>接入顺序还是和前面的相同，先开启的进程会去接受请求，后开启的进程只有在先开启的进程结束后才能接受请求。</p>
+<h3><span id="zai-linux-shang-de-xiao-guo">在Linux上的效果</span><a href="#zai-linux-shang-de-xiao-guo" class="header-anchor">#</a></h3><ul>
+<li><p>与MacOS不同之处在于，Linux 会<strong>随机</strong>（可能是某种算法）选择进程去接受请求。<br><img src="/media/15064456629605.jpg"><br><img src="/media/15064456973224.jpg"><br>这样的好处是，上层程序可以将负载均衡完全交给系统层去完成。</p>
+</li>
+<li><p>在用不同账户去尝试运行这个程序时会报错<br><img src="/media/15064460759272.jpg"></p>
+</li>
+</ul>
+<p>这符合参考文档中的说明，linux 可以让多进程重用端口，但是这些进程必须是同一个账户。显然 Mac OS 的相关机制不同。</p>
+<h3><span id="ling-wai">另外</span><a href="#ling-wai" class="header-anchor">#</a></h3><p>参考文档中说 <strong>SO_REUSEPORT</strong>  是在<strong>Linux 3.9</strong> 之后加入的。<br>我的实验环境的内核版本为<strong>2.6</strong><br><img src="/media/15064464767608.jpg"></p>
+<p>学校网关用的是 NAT 而不是 NAPT 只对 IP 地址进行了转换，<strong>端口号不变</strong>。</p>
+<h1><span id="reference">reference</span><a href="#reference" class="header-anchor">#</a></h1><blockquote>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/Yaokai_AssultMaster/article/details/68951150">http://blog.csdn.net/Yaokai_AssultMaster/article/details/68951150</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t">https://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t</a></p>
+</blockquote>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://bg2bkk.github.io/post/SO_REUSEADDR%E5%92%8CSO_REUSEPORT/">https://bg2bkk.github.io/post/SO_REUSEADDR%E5%92%8CSO_REUSEPORT/</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" data-id="ckk1eltgh000erf4afqi1f55t" data-title="套接字中SO_REUSEPORT和SO_REUSEADDR" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux-socket/" rel="tag">linux,socket</a></li></ul>
 
     </footer>
   </div>
@@ -247,24 +378,17 @@
 
 </div>
 
-<h1><span id="yong-hu-tai-amp-nei-he-tai">用户态&amp;内核态</span><a href="#yong-hu-tai-amp-nei-he-tai" class="header-anchor">#</a></h1><h2><span id="jie-xi">解析</span><a href="#jie-xi" class="header-anchor">#</a></h2><p>经常会提到 <strong>用户态</strong>  <strong>内核态</strong> <strong>用户空间</strong><br><strong>内核空间</strong>这几个概念，但是对其理解并不深刻，只有一个感性的认识，知其然，不知其所以然。</p>
-<p>当然是写一点我自己的理解啦～～</p>
+<h1><span id="yong-hu-tai-amp-nei-he-tai">用户态&amp;内核态</span><a href="#yong-hu-tai-amp-nei-he-tai" class="header-anchor">#</a></h1><h2><span id="jie-xi">解析</span><a href="#jie-xi" class="header-anchor">#</a></h2><p>经常会提到 <code>用户态</code>, <code>内核态</code>, <code>用户空间</code>, <code>内核空间</code> 这几个概念，但是对其理解并不深刻，只有一个感性的认识，知其然，不知其所以然。</p>
 <p>下面这个程序是进行归并排序，数据量为<strong>5000000</strong> </p>
 <p>当前排序操作不涉及外部存储，不存在系统调用，通过<code>top</code> 命令可以看到,cpu 99.7 us。</p>
 <p>其中，第一项<code>99.7 us</code>（user 的缩写）就是 CPU 消耗在 User space 的时间百分比。第二项<code>0.3 sy</code>（system 的缩写）是消耗在 Kernel space 的时间百分比。</p>
 <ul>
-<li><p>ni：niceness 的缩写，CPU 消耗在 nice 进程（低优先级）的时间百分比</p>
-</li>
-<li><p>id：idle 的缩写，CPU 消耗在闲置进程的时间百分比，这个值越低，表示 CPU 越忙</p>
-</li>
-<li><p>wa：wait 的缩写，CPU 等待外部 I/O 的时间百分比，这段时间 CPU 不能干其他事，但是也没有执行运算，这个值太高就说明外部设备有问题</p>
-</li>
-<li><p>hi：hardware interrupt 的缩写，CPU 响应硬件中断请求的时间百分比</p>
-</li>
-<li><p>si：software interrupt 的缩写，CPU 响应软件中断请求的时间百分比</p>
-</li>
-<li><p>st：stole time 的缩写，该项指标只对虚拟机有效，表示分配给当前虚拟机的 CPU 时间之中，被同一台物理机上的其他虚拟机偷走的时间百分比</p>
-</li>
+<li>ni：niceness 的缩写，CPU 消耗在 nice 进程（低优先级）的时间百分比</li>
+<li>id：idle 的缩写，CPU 消耗在闲置进程的时间百分比，这个值越低，表示 CPU 越忙</li>
+<li>wa：wait 的缩写，CPU 等待外部 I/O 的时间百分比，这段时间 CPU 不能干其他事，但是也没有执行运算，这个值太高就说明外部设备有问题</li>
+<li>hi：hardware interrupt 的缩写，CPU 响应硬件中断请求的时间百分比</li>
+<li>si：software interrupt 的缩写，CPU 响应软件中断请求的时间百分比</li>
+<li>st：stole time 的缩写，该项指标只对虚拟机有效，表示分配给当前虚拟机的 CPU 时间之中，被同一台物理机上的其他虚拟机偷走的时间百分比</li>
 </ul>
 <p><img src="/media/15037985050367.jpg"></p>
 <p><img src="/media/15037985410929.jpg"></p>
@@ -315,11 +439,178 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" data-id="ckk1e70q50005o44ahw7n70y3" data-title="Understanding the Linux kernel 笔记" class="article-share-link">Teilen</a>
+      <a data-url="https://franksma.github.io/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" data-id="ckk1eltg80003rf4a94s61bel" data-title="Understanding the Linux kernel 笔记" class="article-share-link">Teilen</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-linux-kernel-development-阅读笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-09-17T15:09:27.000Z" itemprop="datePublished">2017-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">linux kernel development 阅读笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="di-san-zhang-jin-cheng-guan-li">第三章 进程管理</span><a href="#di-san-zhang-jin-cheng-guan-li" class="header-anchor">#</a></h1><h2><span id="shi-me-shi-jin-cheng">什么是进程</span><a href="#shi-me-shi-jin-cheng" class="header-anchor">#</a></h2><blockquote>
+<p>Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.</p>
+</blockquote>
+<p>对 linux 来说 ，thread 和 process 并没有区别。<br>thread 只是特殊的 process</p>
+<blockquote>
+<p>On modern operating systems, processes provide two virtualizations: a virtualized processor and virtual memory. The virtual processor gives the process the illusion that it alone monopolizes the system, despite possibly sharing the processor among hundreds of other processes.</p>
+</blockquote>
+<blockquote>
+<p>Chapter 4, “Process Scheduling,” discusses this virtualization.</p>
+</blockquote>
+<blockquote>
+<p>Virtual memory lets the process allocate and manage memory as if it alone owned all the memory in the system. </p>
+</blockquote>
+<blockquote>
+<p>Virtual memory is covered in Chapter 12, “Memory Management.” </p>
+</blockquote>
+<p>对 process 来说， process 好像独占cpu 和 memory。</p>
+<h2><span id="jin-cheng-miao-shu-fu">进程描述符</span><a href="#jin-cheng-miao-shu-fu" class="header-anchor">#</a></h2><h3><span id="shi-me-shi-jin-cheng-miao-shu-fu">什么是进程描述符</span><a href="#shi-me-shi-jin-cheng-miao-shu-fu" class="header-anchor">#</a></h3><blockquote>
+<p>The task_struct is a relatively large data structure, at around 1.7 kilobytes on a 32-bit machine. This size, however, is quite small considering that the structure contains all the information that the kernel has and needs about a process. The process descriptor contains the data that describes the executing program—open files, the process’s address space, pending signals, the process’s state, and much more.</p>
+</blockquote>
+<p><img src="/media/15056646399749.jpg"></p>
+<h3><span id="jin-cheng-miao-shu-fu-fang-zai-na-li">进程描述符放在那里</span><a href="#jin-cheng-miao-shu-fu-fang-zai-na-li" class="header-anchor">#</a></h3><blockquote>
+<p>The kernel stores the list of processes in a circular doubly linked list called the task list.</p>
+</blockquote>
+<p>在kernel中 进程描述符存储在环形双向链表（task list）中。</p>
+<p>进程描述符 process descriptor ，定义在 <code>&lt;linux/sched.h&gt;</code><br>在 <strong>Understanding the Linux kernel 笔记(三) 第三章 进程</strong> 有贴出pd全部的定义<br>进程描述符在kernel的栈空间中所在的位置<br><img src="/media/15056625632416.jpg"></p>
+<blockquote>
+<p>The system identifies processes by a unique process identification value or PID.</p>
+</blockquote>
+<p>PID 有个默认的最大值 32768  </p>
+<blockquote>
+<p>this is controlled in <code>&lt;linux/threads.h&gt;</code></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This controls the default maximum pid allocated to a process</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PID_MAX_DEFAULT 0x8000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * A maximum of 4 million PIDs should be enough for a while:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PID_MAX_LIMIT (sizeof(long) &gt; 4 ? 4*1024*1024 : PID_MAX_DEFAULT)</span></span><br></pre></td></tr></table></figure>
+<p>the administrator may increase the maximum value via <code>/proc/sys/kernel/pid_max</code></p>
+<p>PID 最大值可通过改变 <code>/proc/sys/kernel/pid_max</code> 修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/kernel/pid_max</span></span><br><span class="line">32768</span><br></pre></td></tr></table></figure>
+<p><strong>x86</strong> 架构不能将 <strong>当前运行</strong>的process 的 <strong>PD</strong> 存在<strong>寄存器</strong>中，因为它的寄存器太少了，但是 <strong>ppc</strong> 架构的可以 ，ppc 架构的寄存器多。</p>
+<p>所以还是<strong>IBM</strong>厉害，寄存器都给的这么奢侈～～</p>
+<blockquote>
+<p>Contrast this approach with that taken by PowerPC (IBM’s modern RISC-based microprocessor), which stores the current task_struct in a register. Thus, current on PPC merely returns the value stored in the register r2. PPC can take this approach because, unlike x86, it has plenty of registers. Because accessing the process descriptor is a common and important job, the PPC kernel developers deem using a register worthy for the task.</p>
+</blockquote>
+<p>x86 架构存储的是 <strong>thread_info</strong> &lt;<code>The thread_info structure is defined on x86 in &lt;include/asm-x86_64/thread_info.h&gt;</code>&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">thread_info</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>	*<span class="title">task</span>;</span><span class="comment">// a point to pd</span></span><br><span class="line">	<span class="comment">/* main task structure */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">exec_domain</span>	*<span class="title">exec_domain</span>;</span>	<span class="comment">/* execution domain */</span></span><br><span class="line">	__u32			flags;		<span class="comment">/* low level flags */</span></span><br><span class="line">	__u32			status;		<span class="comment">/* thread synchronous flags */</span></span><br><span class="line">	__u32			cpu;		<span class="comment">/* current CPU */</span></span><br><span class="line">	<span class="keyword">int</span> 			preempt_count;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mm_segment_t</span>		addr_limit;	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">restart_block</span>    <span class="title">restart_block</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2><span id="jin-cheng-zhuang-tai">进程状态</span><a href="#jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><p>pd 结构体中的 状态变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatile long state;	&#x2F;* -1 unrunnable, 0 runnable, &gt;0 stopped *&#x2F;</span><br></pre></td></tr></table></figure>
+<p>一共<strong>5</strong>种 </p>
+<ul>
+<li><p>TASK_RUNNING<br>  正在运行或在运行队列中</p>
+</li>
+<li><p>TASK_INTERRUPTIBLE<br>  睡眠状态</p>
+</li>
+<li><p>TASK_UNINTERRUPTIBLE<br>  这个状态不好理解，意思是即使有其需要的资源，他也不一定会运行</p>
+</li>
+</ul>
+<blockquote>
+<p>• TASK_UNINTERRUPTIBLE—This state is identical to TASK_INTERRUPTIBLE except that it does not wake up and become runnable if it receives a signal. This is used in situations where the process must wait without interruption or when the event is expected to occur quite quickly. Because the task does not respond to signals in this state, TASK_UNINTERRUPTIBLE is less often used than TASK_INTERRUPTIBLE.</p>
+</blockquote>
+<blockquote>
+<p>This is why you have those dreaded unkillable processes with state D in ps(1). Because the task will not respond to signals, you cannot send it a SIGKILL signal. Further, even if you could terminate the task, it would not be wise because the task is supposedly in the middle of an important operation and may hold a semaphore.</p>
+</blockquote>
+<ul>
+<li><p>__TASK_TRACED</p>
+</li>
+<li><p>__TASK_STOPPED</p>
+</li>
+</ul>
+<h2><span id="ru-he-gai-bian-jin-cheng-zhuang-tai">如何改变进程状态</span><a href="#ru-he-gai-bian-jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set_task_state(task, state);        <span class="comment">/* set task &#x27;task&#x27; to state &#x27;state&#x27; */</span></span><br></pre></td></tr></table></figure>
+
+<p>在linux/sched.h 中set_task_state函数 定义为 set_mb </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> set_task_state(tsk, state_value)		\</span></span><br><span class="line">	set_mb((tsk)-&gt;state, (state_value))</span><br></pre></td></tr></table></figure>
+<p>set_mb在不同架构的处理器上的具体实现不一样</p>
+<p>在<strong>x86_64</strong> 中</p>
+<blockquote>
+<p>include/asm-x86_64/system.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define set_mb(var, value) do &#123; xchg(&amp;var, value); &#125; while (0)</span><br></pre></td></tr></table></figure>
+<p>在<strong>ppc</strong> 中</p>
+<blockquote>
+<p>include/asm-ppc/system.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define set_mb(var, value)	do &#123; var &#x3D; value; mb(); &#125; while (0)</span><br></pre></td></tr></table></figure>
+<h2><span id="jin-cheng-shang-xia-wen">进程上下文</span><a href="#jin-cheng-shang-xia-wen" class="header-anchor">#</a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk1eltga0005rf4add9nanbz" data-title="linux kernel development 阅读笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-redhat实习总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2017-08-24T13:18:13.000Z" itemprop="datePublished">2017-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/">redhat实习总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>在实习过程中见识到了很多我特别感兴趣的项目，但是苦于自己底子薄弱，无法深入研究。</p>
+<h2><span id="dpdk-kvm-rt-kernel-rt-openvswitch">dpdk+kvm-rt+kernel-rt+openvswitch</span><a href="#dpdk-kvm-rt-kernel-rt-openvswitch" class="header-anchor">#</a></h2><p>这套方案是 Red Hat 的主推的NFV（Network Functions Virtualization）技术标准。<br>其中 dpdk 主要解决传统 linux 网络协议栈中数据包的传输要经过内核态和用户态的拷贝开销。dpdk的做法是将数据包传输全部放在用户态进行。由Intel提出并开源。主要基于Intel的网卡。</p>
+<p>kvm-rt 和 kernel-rt 主要解决迅速判断问题，它能过迅速给出判断结果，并不是速度快。</p>
+<p>openvswitch 主要解决SDN的需求，相对于传统的linux bridge，ovs可定制化程度更高。</p>
+<h2><span id="question">Question</span><a href="#question" class="header-anchor">#</a></h2><p>开源软件，如 qemu-kvm 为什么要实现这么多功能。<br>为了降低数据包处理的延迟，将数据包从linux协议栈转移到内核态。安全性如何保障？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckk1eltgd0008rf4a251kff6y" data-title="redhat实习总结" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li></ul>
 
     </footer>
   </div>
@@ -342,7 +633,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-socket/" rel="tag">linux,socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
     </div>
   </div>
 
@@ -352,7 +643,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a>
+      <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux-socket/" style="font-size: 10px;">linux,socket</a> <a href="/tags/redhat/" style="font-size: 10px;">redhat</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a>
     </div>
   </div>
 
@@ -361,7 +652,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
     </div>
   </div>
 
@@ -374,11 +665,19 @@
       <ul>
         
           <li>
+            <a href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
+          </li>
+        
+          <li>
             <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rust 学习笔记</a>
           </li>
         
           <li>
             <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/">毕业答辩完成</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/">套接字中SO_REUSEPORT和SO_REUSEADDR</a>
           </li>
         
           <li>

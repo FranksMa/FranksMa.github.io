@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2017/9 | FranksMa BLOG</title>
+  <title>redhat实习总结 | FranksMa BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="FranksMa BLOG">
-<meta property="og:url" content="https://franksma.github.io/archives/2017/09/index.html">
+  <meta name="description" content="在实习过程中见识到了很多我特别感兴趣的项目，但是苦于自己底子薄弱，无法深入研究。 dpdk+kvm-rt+kernel-rt+openvswitch#这套方案是 Red Hat 的主推的NFV（Network Functions Virtualization）技术标准。其中 dpdk 主要解决传统 linux 网络协议栈中数据包的传输要经过内核态和用户态的拷贝开销。dpdk的做法是将数据包传输全部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redhat实习总结">
+<meta property="og:url" content="https://franksma.github.io/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="FranksMa BLOG">
+<meta property="og:description" content="在实习过程中见识到了很多我特别感兴趣的项目，但是苦于自己底子薄弱，无法深入研究。 dpdk+kvm-rt+kernel-rt+openvswitch#这套方案是 Red Hat 的主推的NFV（Network Functions Virtualization）技术标准。其中 dpdk 主要解决传统 linux 网络协议栈中数据包的传输要经过内核态和用户态的拷贝开销。dpdk的做法是将数据包传输全部">
 <meta property="og:locale">
+<meta property="article:published_time" content="2017-08-24T13:18:13.000Z">
+<meta property="article:modified_time" content="2021-01-17T17:14:30.061Z">
 <meta property="article:author" content="TIANQI MA">
+<meta property="article:tag" content="redhat">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="FranksMa BLOG" type="application/atom+xml">
@@ -69,77 +74,63 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" class="archive-article-date">
-  <time class="dt-published" datetime="2017-09-26T16:22:50.000Z" itemprop="datePublished">Sep 27</time>
+        <section id="main"><article id="post-redhat实习总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2017-08-24T13:18:13.000Z" itemprop="datePublished">2017-08-24</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/">套接字中SO_REUSEPORT和SO_REUSEADDR</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      redhat实习总结
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2017-09-25T16:27:49.000Z" itemprop="datePublished">Sep 26</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/">Understanding the Linux kernel 笔记</a>
-    </h1>
-  
+        <p>在实习过程中见识到了很多我特别感兴趣的项目，但是苦于自己底子薄弱，无法深入研究。</p>
+<h2><span id="dpdk-kvm-rt-kernel-rt-openvswitch">dpdk+kvm-rt+kernel-rt+openvswitch</span><a href="#dpdk-kvm-rt-kernel-rt-openvswitch" class="header-anchor">#</a></h2><p>这套方案是 Red Hat 的主推的NFV（Network Functions Virtualization）技术标准。<br>其中 dpdk 主要解决传统 linux 网络协议栈中数据包的传输要经过内核态和用户态的拷贝开销。dpdk的做法是将数据包传输全部放在用户态进行。由Intel提出并开源。主要基于Intel的网卡。</p>
+<p>kvm-rt 和 kernel-rt 主要解决迅速判断问题，它能过迅速给出判断结果，并不是速度快。</p>
+<p>openvswitch 主要解决SDN的需求，相对于传统的linux bridge，ovs可定制化程度更高。</p>
+<h2><span id="question">Question</span><a href="#question" class="header-anchor">#</a></h2><p>开源软件，如 qemu-kvm 为什么要实现这么多功能。<br>为了降低数据包处理的延迟，将数据包从linux协议栈转移到内核态。安全性如何保障？</p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  <time class="dt-published" datetime="2017-09-17T15:09:27.000Z" itemprop="datePublished">Sep 17</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">linux kernel development 阅读笔记</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckk1eltgd0008rf4a251kff6y" data-title="redhat实习总结" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          linux kernel development 阅读笔记
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

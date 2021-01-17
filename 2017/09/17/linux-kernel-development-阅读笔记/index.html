@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>linux kernel development 阅读笔记 | FranksMa BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="第三章 进程管理#什么是进程# Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux kernel development 阅读笔记">
+<meta property="og:url" content="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="FranksMa BLOG">
+<meta property="og:description" content="第三章 进程管理#什么是进程# Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
+<meta property="og:locale">
+<meta property="og:image" content="https://franksma.github.io/media/15056646399749.jpg">
+<meta property="og:image" content="https://franksma.github.io/media/15056625632416.jpg">
+<meta property="article:published_time" content="2017-09-17T15:09:27.000Z">
+<meta property="article:modified_time" content="2021-01-17T17:16:32.163Z">
+<meta property="article:author" content="TIANQI MA">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://franksma.github.io/media/15056646399749.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="FranksMa BLOG" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FranksMa BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://franksma.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-linux-kernel-development-阅读笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-09-17T15:09:27.000Z" itemprop="datePublished">2017-09-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      linux kernel development 阅读笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="di-san-zhang-jin-cheng-guan-li">第三章 进程管理</span><a href="#di-san-zhang-jin-cheng-guan-li" class="header-anchor">#</a></h1><h2><span id="shi-me-shi-jin-cheng">什么是进程</span><a href="#shi-me-shi-jin-cheng" class="header-anchor">#</a></h2><blockquote>
+<p>Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.</p>
+</blockquote>
+<p>对 linux 来说 ，thread 和 process 并没有区别。<br>thread 只是特殊的 process</p>
+<blockquote>
+<p>On modern operating systems, processes provide two virtualizations: a virtualized processor and virtual memory. The virtual processor gives the process the illusion that it alone monopolizes the system, despite possibly sharing the processor among hundreds of other processes.</p>
+</blockquote>
+<blockquote>
+<p>Chapter 4, “Process Scheduling,” discusses this virtualization.</p>
+</blockquote>
+<blockquote>
+<p>Virtual memory lets the process allocate and manage memory as if it alone owned all the memory in the system. </p>
+</blockquote>
+<blockquote>
+<p>Virtual memory is covered in Chapter 12, “Memory Management.” </p>
+</blockquote>
+<p>对 process 来说， process 好像独占cpu 和 memory。</p>
+<h2><span id="jin-cheng-miao-shu-fu">进程描述符</span><a href="#jin-cheng-miao-shu-fu" class="header-anchor">#</a></h2><h3><span id="shi-me-shi-jin-cheng-miao-shu-fu">什么是进程描述符</span><a href="#shi-me-shi-jin-cheng-miao-shu-fu" class="header-anchor">#</a></h3><blockquote>
+<p>The task_struct is a relatively large data structure, at around 1.7 kilobytes on a 32-bit machine. This size, however, is quite small considering that the structure contains all the information that the kernel has and needs about a process. The process descriptor contains the data that describes the executing program—open files, the process’s address space, pending signals, the process’s state, and much more.</p>
+</blockquote>
+<p><img src="/media/15056646399749.jpg"></p>
+<h3><span id="jin-cheng-miao-shu-fu-fang-zai-na-li">进程描述符放在那里</span><a href="#jin-cheng-miao-shu-fu-fang-zai-na-li" class="header-anchor">#</a></h3><blockquote>
+<p>The kernel stores the list of processes in a circular doubly linked list called the task list.</p>
+</blockquote>
+<p>在kernel中 进程描述符存储在环形双向链表（task list）中。</p>
+<p>进程描述符 process descriptor ，定义在 <code>&lt;linux/sched.h&gt;</code><br>在 <strong>Understanding the Linux kernel 笔记(三) 第三章 进程</strong> 有贴出pd全部的定义<br>进程描述符在kernel的栈空间中所在的位置<br><img src="/media/15056625632416.jpg"></p>
+<blockquote>
+<p>The system identifies processes by a unique process identification value or PID.</p>
+</blockquote>
+<p>PID 有个默认的最大值 32768  </p>
+<blockquote>
+<p>this is controlled in <code>&lt;linux/threads.h&gt;</code></p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This controls the default maximum pid allocated to a process</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PID_MAX_DEFAULT 0x8000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * A maximum of 4 million PIDs should be enough for a while:</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PID_MAX_LIMIT (sizeof(long) &gt; 4 ? 4*1024*1024 : PID_MAX_DEFAULT)</span></span><br></pre></td></tr></table></figure>
+<p>the administrator may increase the maximum value via <code>/proc/sys/kernel/pid_max</code></p>
+<p>PID 最大值可通过改变 <code>/proc/sys/kernel/pid_max</code> 修改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /proc/sys/kernel/pid_max</span></span><br><span class="line">32768</span><br></pre></td></tr></table></figure>
+<p><strong>x86</strong> 架构不能将 <strong>当前运行</strong>的process 的 <strong>PD</strong> 存在<strong>寄存器</strong>中，因为它的寄存器太少了，但是 <strong>ppc</strong> 架构的可以 ，ppc 架构的寄存器多。</p>
+<p>所以还是<strong>IBM</strong>厉害，寄存器都给的这么奢侈～～</p>
+<blockquote>
+<p>Contrast this approach with that taken by PowerPC (IBM’s modern RISC-based microprocessor), which stores the current task_struct in a register. Thus, current on PPC merely returns the value stored in the register r2. PPC can take this approach because, unlike x86, it has plenty of registers. Because accessing the process descriptor is a common and important job, the PPC kernel developers deem using a register worthy for the task.</p>
+</blockquote>
+<p>x86 架构存储的是 <strong>thread_info</strong> &lt;<code>The thread_info structure is defined on x86 in &lt;include/asm-x86_64/thread_info.h&gt;</code>&gt;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">thread_info</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>	*<span class="title">task</span>;</span><span class="comment">// a point to pd</span></span><br><span class="line">	<span class="comment">/* main task structure */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">exec_domain</span>	*<span class="title">exec_domain</span>;</span>	<span class="comment">/* execution domain */</span></span><br><span class="line">	__u32			flags;		<span class="comment">/* low level flags */</span></span><br><span class="line">	__u32			status;		<span class="comment">/* thread synchronous flags */</span></span><br><span class="line">	__u32			cpu;		<span class="comment">/* current CPU */</span></span><br><span class="line">	<span class="keyword">int</span> 			preempt_count;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mm_segment_t</span>		addr_limit;	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">restart_block</span>    <span class="title">restart_block</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2><span id="jin-cheng-zhuang-tai">进程状态</span><a href="#jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><p>pd 结构体中的 状态变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatile long state;	&#x2F;* -1 unrunnable, 0 runnable, &gt;0 stopped *&#x2F;</span><br></pre></td></tr></table></figure>
+<p>一共<strong>5</strong>种 </p>
+<ul>
+<li><p>TASK_RUNNING<br>  正在运行或在运行队列中</p>
+</li>
+<li><p>TASK_INTERRUPTIBLE<br>  睡眠状态</p>
+</li>
+<li><p>TASK_UNINTERRUPTIBLE<br>  这个状态不好理解，意思是即使有其需要的资源，他也不一定会运行</p>
+</li>
+</ul>
+<blockquote>
+<p>• TASK_UNINTERRUPTIBLE—This state is identical to TASK_INTERRUPTIBLE except that it does not wake up and become runnable if it receives a signal. This is used in situations where the process must wait without interruption or when the event is expected to occur quite quickly. Because the task does not respond to signals in this state, TASK_UNINTERRUPTIBLE is less often used than TASK_INTERRUPTIBLE.</p>
+</blockquote>
+<blockquote>
+<p>This is why you have those dreaded unkillable processes with state D in ps(1). Because the task will not respond to signals, you cannot send it a SIGKILL signal. Further, even if you could terminate the task, it would not be wise because the task is supposedly in the middle of an important operation and may hold a semaphore.</p>
+</blockquote>
+<ul>
+<li><p>__TASK_TRACED</p>
+</li>
+<li><p>__TASK_STOPPED</p>
+</li>
+</ul>
+<h2><span id="ru-he-gai-bian-jin-cheng-zhuang-tai">如何改变进程状态</span><a href="#ru-he-gai-bian-jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set_task_state(task, state);        <span class="comment">/* set task &#x27;task&#x27; to state &#x27;state&#x27; */</span></span><br></pre></td></tr></table></figure>
+
+<p>在linux/sched.h 中set_task_state函数 定义为 set_mb </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> set_task_state(tsk, state_value)		\</span></span><br><span class="line">	set_mb((tsk)-&gt;state, (state_value))</span><br></pre></td></tr></table></figure>
+<p>set_mb在不同架构的处理器上的具体实现不一样</p>
+<p>在<strong>x86_64</strong> 中</p>
+<blockquote>
+<p>include/asm-x86_64/system.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define set_mb(var, value) do &#123; xchg(&amp;var, value); &#125; while (0)</span><br></pre></td></tr></table></figure>
+<p>在<strong>ppc</strong> 中</p>
+<blockquote>
+<p>include/asm-ppc/system.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define set_mb(var, value)	do &#123; var &#x3D; value; mb(); &#125; while (0)</span><br></pre></td></tr></table></figure>
+<h2><span id="jin-cheng-shang-xia-wen">进程上下文</span><a href="#jin-cheng-shang-xia-wen" class="header-anchor">#</a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk1eltga0005rf4add9nanbz" data-title="linux kernel development 阅读笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Understanding the Linux kernel 笔记
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">redhat实习总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux-socket/" rel="tag">linux,socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/linux-socket/" style="font-size: 10px;">linux,socket</a> <a href="/tags/redhat/" style="font-size: 10px;">redhat</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rust 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/">毕业答辩完成</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/">套接字中SO_REUSEPORT和SO_REUSEADDR</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/">Understanding the Linux kernel 笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 TIANQI MA<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
