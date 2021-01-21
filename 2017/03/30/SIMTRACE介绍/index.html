@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SIMTRACE环境搭建 | FranksMa BLOG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="工具环境搭建。仅作参考，具有时效性，请以官方文档为准。 跨平台编译工具arm-elf#参考链接：https:&#x2F;&#x2F;osmocom.org&#x2F;projects&#x2F;baseband&#x2F;wiki&#x2F;GnuArmToolchain新建三个目录$mkdir build src install  安装依赖$ sudo apt-get install build-essential libgmp3-dev libmpfr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SIMTRACE环境搭建">
+<meta property="og:url" content="https://franksma.github.io/2017/03/30/SIMTRACE%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="FranksMa BLOG">
+<meta property="og:description" content="工具环境搭建。仅作参考，具有时效性，请以官方文档为准。 跨平台编译工具arm-elf#参考链接：https:&#x2F;&#x2F;osmocom.org&#x2F;projects&#x2F;baseband&#x2F;wiki&#x2F;GnuArmToolchain新建三个目录$mkdir build src install  安装依赖$ sudo apt-get install build-essential libgmp3-dev libmpfr">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-03-29T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-01-21T15:57:52.873Z">
+<meta property="article:author" content="TIANQI MA">
+<meta property="article:tag" content="SIMTrace">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="FranksMa BLOG" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">FranksMa BLOG</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://franksma.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-SIMTRACE介绍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/03/30/SIMTRACE%E4%BB%8B%E7%BB%8D/" class="article-date">
+  <time class="dt-published" datetime="2017-03-29T16:00:00.000Z" itemprop="datePublished">2017-03-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C/">操作</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SIMTRACE环境搭建
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>工具环境搭建。仅作参考，具有时效性，请以官方文档为准。</p>
+<h2><span id="kua-ping-tai-bian-yi-gong-ju-arm-elf">跨平台编译工具arm-elf</span><a href="#kua-ping-tai-bian-yi-gong-ju-arm-elf" class="header-anchor">#</a></h2><p>参考链接：<a target="_blank" rel="noopener" href="https://osmocom.org/projects/baseband/wiki/GnuArmToolchain">https://osmocom.org/projects/baseband/wiki/GnuArmToolchain</a><br>新建三个目录<br><code>$mkdir build src install </code></p>
+<p>安装依赖<br><code>$ sudo apt-get install build-essential libgmp3-dev libmpfr-dev libx11-6 libx11-dev texinfo flex bison libncurses5 libncurses5-dbg libncurses5-dev libncursesw5 libncursesw5-dbg libncursesw5-dev zlibc zlib1g-dev libmpfr4 libmpc-dev</code></p>
+<p>将文件夹中<br><strong>binutils-2.21.1a.tar.bz2，gcc-4.5.2.tar.bz2，newlib-1.19.0.tar.gz</strong>放在<strong>src</strong>中<br>脚本工具gnu-arm-build.2.sh 放在<strong>当前目录</strong>，执行 <strong>gnu-arm-build.2.sh</strong><br><code>$ bash gnu-arm-build.2.sh</code><br>目录结构如下：</p>
+
+<p>报错处理：<br>先卸载 texinfo<br><code>$apt remove texinfo</code><br>安装低版本texinfo<br><code>dpkg –i texinfo_4.13a.dfsg.1-8ubuntu2_amd64.deb</code><br>再运行<br><code>$ ./gnu-arm-build.2.sh </code></p>
+<h2><span id="bian-yi-ku-wen-jian-libosmocore">编译库文件libosmocore</span><a href="#bian-yi-ku-wen-jian-libosmocore" class="header-anchor">#</a></h2><p>参考链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://osmocom.org/projects/libosmocore/wiki/Libosmocore">https://osmocom.org/projects/libosmocore/wiki/Libosmocore</a></p>
+</blockquote>
+<p>安装依赖</p>
+<p><code>$ sudo apt-get install build-essential libtool libtalloc-dev shtool autoconf automake git-core pkg-config make gcc libpcsclite-dev</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git clone git:&#x2F;&#x2F;git.osmocom.org&#x2F;libosmocore.git</span><br><span class="line">$ cd libosmocore&#x2F;</span><br><span class="line">$ autoreconf -i</span><br><span class="line">$ .&#x2F;configure</span><br><span class="line">$ make</span><br><span class="line">$ sudo make install</span><br><span class="line">$ sudo ldconfig -i</span><br><span class="line">$ cd ..</span><br></pre></td></tr></table></figure>
+<h2><span id="an-zhuang-pc-ke-hu-duan-simtrace">安装pc客户端simtrace</span><a href="#an-zhuang-pc-ke-hu-duan-simtrace" class="header-anchor">#</a></h2><p>参考链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://osmocom.org/projects/simtrace/wiki/SIMtrace">https://osmocom.org/projects/simtrace/wiki/SIMtrace</a></p>
+</blockquote>
+<p>下载simtrace源码<br><code>$ git clone git://git.osmocom.org/simtrace.git</code><br>依赖<br><code>$ sudo apt-get install libusb-1.0-0-dev</code></p>
+<p><code>$ cd simtrace/host</code><br>编译<br><code>$ make</code></p>
+<h2><span id="bian-yi-simtrace-gu-jian">编译simtrace 固件</span><a href="#bian-yi-simtrace-gu-jian" class="header-anchor">#</a></h2><p>参考链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://osmocom.org/projects/simtrace/wiki/SIMtrace_Firmware">https://osmocom.org/projects/simtrace/wiki/SIMtrace_Firmware</a></p>
+</blockquote>
+<h3><span id="xia-zai-yuan-ma-ji-bian-yi">下载源码及编译</span><a href="#xia-zai-yuan-ma-ji-bian-yi" class="header-anchor">#</a></h3><p>osmocom最新修改的openpcd源码无法正常使用，其头文件中结构体变量声明类型有误,或者是交叉编译工具版本较旧(uint8_t/ u_int8_t 两个定义)，使用旧的可编译通过的源码，openpcd.zip<br>源码修改链接</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://git.osmocom.org/openpcd/commit/?id=373c172ab858102e1818c8476ab1a2b290685cda">http://git.osmocom.org/openpcd/commit/?id=373c172ab858102e1818c8476ab1a2b290685cda</a></p>
+</blockquote>
+<p>在交叉编译工具中的头文件( #include &lt; sys/types.h &gt; )</p>
+<p>源代码中最近一次修改是将所有文件中的数据类型u_int8_t、u_int16_t全部修改为uint8_t、uint16_t，但是使用的交叉编译工具（arm-elf-gcc）中的对该数据类型的定义为u_int8_t、u_int16_t。这导致新代码编译出错。</p>
+
+<p><code>$ git clone git://git.osmocom.org/openpcd.git</code><br><code>$ cd openpcd/firmware</code><br>设置环境变量（arm-elf-gcc所在目录）<br><code>$ export PATH=$PATH:/home/mtq/simtrace/arm-elf-toolchain/install/bin</code><br><code>$ make -f Makefile.dfu BOARD=SIMTRACE</code><br><code>$ make BOARD=SIMTRACE DEBUG=1 TARGET=main_simtrace</code><br><code>$ cat dfu.bin main_simtrace.bin &gt; main_simtrace.samba</code><br><code>$ cd ../..</code><br>其中生成的文件</p>
+<hr>
+<p>dfu.bin – the sam7dfu 2nd level bootloader. It implements the USB DFU (Device Firmware Upgrade) profile.<br>main_simtrace.bin – the actual simtrace program. To be loaded via DFU, using dfu-util.<br>main_simtrace.samba – sam7dfu + simtrace image. to be loaded via SAM-BA, using sam7utils (see below).</p>
+<hr>
+<h2><span id="liang-chong-gei-ban-zi-shua-gu-jian-de-fang-fa">两种给板子刷固件的方法</span><a href="#liang-chong-gei-ban-zi-shua-gu-jian-de-fang-fa" class="header-anchor">#</a></h2><h3><span id="dfu-mo-shi">DFU模式</span><a href="#dfu-mo-shi" class="header-anchor">#</a></h3><p>该模式是在固件可用下，需要升级固件时使用<br>安装工具<br><code>$ sudo apt-get install dfu-util</code><br>刷固件<br><code>$ sudo dfu-util -d 16c0:0762 -a0 -D ./main_simtrace.bin –R</code></p>
+<h3><span id="sam-ba">SAM-BA</span><a href="#sam-ba" class="header-anchor">#</a></h3><p>该模式用于板子固件丢失，需要重新刷入底层固件<br><code>$ wget http://www.openpcd.org/dl/sam7utils-0.2.1-bm.tar.bz2</code><br>（该链接已经失效）<br><code>$ tar xf sam7utils-*.tar.bz2</code><br><code>$ cd sam7utils</code><br><code>$ ./configure --prefix=/usr/local</code><br><code>$ make AM_CFLAGS=&quot;&quot;</code><br>编译生成工具<br>将板子进入SAM-BA模式</p>
+
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/03/30/SIMTRACE%E4%BB%8B%E7%BB%8D/" data-id="ckk71hqv10003fy4ag4exbjed" data-title="SIMTRACE环境搭建" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SIMTrace/" rel="tag">SIMTrace</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/17/The-Other-Side-of-Hope/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          The Other Side of Hope
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%84%9F%E6%83%B3/">感想</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C/">操作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SIMTrace/" rel="tag">SIMTrace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" rel="tag">比特币</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/SIMTrace/" style="font-size: 10px;">SIMTrace</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/redhat/" style="font-size: 10px;">redhat</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" style="font-size: 10px;">比特币</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rust 学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/">毕业答辩完成</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/19/%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">精通比特币阅读笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/">套接字中SO_REUSEPORT和SO_REUSEADDR</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/">Understanding the Linux kernel 笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 TIANQI MA<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

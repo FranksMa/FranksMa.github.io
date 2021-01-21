@@ -59,10 +59,10 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://franksma.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://franksma.github.io"></form>
       </div>
     </div>
   </div>
@@ -70,60 +70,6 @@
 
       <div class="outer">
         <section id="main">
-  
-    <article id="post-算法学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-  <time class="dt-published" datetime="2021-01-17T17:15:08.000Z" itemprop="datePublished">2021-01-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>今天开始学习算法和设计模式<br>主要学习资料是<br>视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UC5xDNEcvb1vgw3lE21Ack2Q">Hua Hua</a><br>博客 <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/">Huahua’s Tech Road</a></p>
-<h1><span id="20200418">20200418</span><a href="#20200418" class="header-anchor">#</a></h1><p>学习了并查集，看了视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=VJnUwsE4fWA"><br>花花酱 Disjoint-set/Union-find Forest - 刷题找工作 SP1</a> ，  <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/data-structure/sp1-union-find-set/">博客文章</a><br>视频里面主要讲了 find 和 union 两个操作。<br>find 即找到节点的root。 对应路径压缩。 这里面有个点是，路径压缩是在find 的过程中进行的，如果不进行find，则不进行路径压缩。并且具体实现是通过递归实现。具体实现 我不太会用语言描述，主要是对递归的理解不深。<strong>递归算法需要加强下</strong></p>
-<p>union 对应分枝合并，将 rank 少的合并到 rank 多的。</p>
-<p>并查集 这个算法 在 <a target="_blank" rel="noopener" href="https://item.jd.com/11098789.html">算法(第4版) [Algorithms Fourth Edition]</a>  这本书里面是单独的一个章节 还需要详细学习下。。</p>
-<p>参考链接<br><a target="_blank" rel="noopener" href="https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf">https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf</a></p>
-<h1><span id="20200425">20200425</span><a href="#20200425" class="header-anchor">#</a></h1><p>根据数据输入规模估算时间复杂度，从而大概找到对应的算法。<br><img src="/media/15878003520657.jpg"></p>
-<p>树状数组 (没搞懂，找别的资料看一下)</p>
-<p><img src="/media/15878005034918.jpg"></p>
-<p>线程与进程</p>
-<p><img src="/media/15878051796647.jpg"></p>
-<h1><span id="20200512">20200512</span><a href="#20200512" class="header-anchor">#</a></h1><h2><span id="zheng-ze-biao-da-shi-ru-men">正则表达式入门</span><a href="#zheng-ze-biao-da-shi-ru-men" class="header-anchor">#</a></h2><p><code>A.*A</code> 字符串中有两个A<br><code>LLL</code> 字符串中有连续三个L<br><code>A.*A｜LLL</code> 字符串中有两个A 或者连续的三个L<br>正则表达式的优势 是 <em>可读性高</em>。</p>
-<h2><span id="dong-tai-gui-hua-ru-men">动态规划入门</span><a href="#dong-tai-gui-hua-ru-men" class="header-anchor">#</a></h2><p><img src="/media/15892969856518.jpg"><br>这个题目的思路是找到中间节点 如果前i的子串中间节点右边的串在字典中 ，那么前i的子串就是可分割的。<br>整个字符串是否可分割即 i 等于 字符串长度 时是否能找到中间节点右边的串在字典中。<br><img src="/media/15892976091142.jpg"></p>
-<p>这里先是在 s 前加了一个空字符。<br>然后构造了长度为n+1,初始值为0的数组，标记 s 前 i 长度的字符串是否可以被分割。<br>f[0] = 1 的意思是 s 是空字符串。</p>
-<p>两层循环。<br>外层循环是整个问题的规模。即s 的长度。<br>内层循环是子问题，j 从 0 到 i。如果j 右边到i 的字符串在字典中，即 s[0:i]是可以被分割的。就可以跳出内层循环了。<br>逐步扩大求解范围，通过解决子问题，从而得到整体问题的解。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk718x8d000cd64a2z4ncltq" data-title="算法学习笔记" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
   
     <article id="post-Rust-学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -195,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk718x850004d64a77uf2bp4" data-title="Rust 学习笔记" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk71hquy0001fy4a9ovnh3q9" data-title="Rust 学习笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -241,11 +187,55 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" data-id="ckk718x8e000dd64aeaq9fcxv" data-title="毕业答辩完成" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/" data-id="ckk71hqvh0012fy4a89mddj0g" data-title="毕业答辩完成" class="article-share-link">Teilen</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-精通比特币阅读笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/12/19/%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-12-19T05:25:29.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/12/19/%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">精通比特币阅读笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="shu-ji-di-zhi">书籍地址</span><a href="#shu-ji-di-zhi" class="header-anchor">#</a></h1><p><a target="_blank" rel="noopener" href="http://www.zhibimo.com/read/wang-miao/mastering-bitcoin/index.html">中文译文</a><br><a target="_blank" rel="noopener" href="https://www.bitcoinbook.info/">英文原版</a></p>
+<h1><span id="xuan-duan">选段</span><a href="#xuan-duan" class="header-anchor">#</a></h1><p>比特币的所有权是通过数字密钥、比特币地址和数字签名来确立的。数字密钥实际上并不是存储在网络中，而是由用户生成并存储在一个文件或简单的数据库中，称为钱包。存储在用户钱包中的数字密钥完全独立于比特币协议，可由用户的钱包软件生成并管理，而无需区块链或网络连接。密钥实现了比特币的许多有趣特性，包括去中心化信任和控制、所有权认证和基于密码学证明的安全模型。</p>
+<p>一笔比特币交易的生命周期起始于它被创建的那一刻，也就是诞生（origination）。 随后，比特币交易会被一个或者多个签名加密，这些签名标志着对该交易指向的比特币资金的使用许可。接下来，比特币交易被广播到比特币网络中。在比特币网络中，每一个节点（比特币交易参与者）验证、并将交易在网络中进行广播，直到这笔交易被网络中大多数节点接收。最终，比特币交易被一个挖矿节点验证，并被添加到区块链上一个记录着许多比特币交易的区块中。</p>
+<p>一笔比特币交易一旦被记录到区块链上并被足够多的后续区块确认，便成为比特币总账簿的一部分，并被所有比特币交易参与者认可为有效交易。于是，被这笔交易分配到一个新所有者名下的比特币资金可以在新的交易中被使用——这使得所有权链得以延伸且再次开启一个新的比特币交易生命周期。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/12/19/%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk71hqvj0015fy4ada6c7rml" data-title="精通比特币阅读笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" rel="tag">比特币</a></li></ul>
 
     </footer>
   </div>
@@ -320,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" data-id="ckk718x8c0009d64a8b67d0y5" data-title="套接字中SO_REUSEPORT和SO_REUSEADDR" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" data-id="ckk71hqva000ffy4a0nhu0k1p" data-title="套接字中SO_REUSEPORT和SO_REUSEADDR" class="article-share-link">Teilen</a>
       
       
       
@@ -443,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" data-id="ckk718x8b0007d64a2drz0ig2" data-title="Understanding the Linux kernel 笔记" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2017/09/26/Understanding-the-Linux-kernel-%E7%AC%94%E8%AE%B0/" data-id="ckk71hqv60009fy4a3l9q088y" data-title="Understanding the Linux kernel 笔记" class="article-share-link">Teilen</a>
       
       
       
@@ -565,11 +555,137 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk718x8b0008d64a5q3r2itl" data-title="linux kernel development 阅读笔记" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk71hqv7000afy4afkih8cog" data-title="linux kernel development 阅读笔记" class="article-share-link">Teilen</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-算法学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-08-26T02:36:50.000Z" itemprop="datePublished">2017-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>今天开始学习算法和设计模式<br>主要学习资料是<br>视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/channel/UC5xDNEcvb1vgw3lE21Ack2Q">Hua Hua</a><br>博客 <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/">Huahua’s Tech Road</a></p>
+<h1><span id="20200418">20200418</span><a href="#20200418" class="header-anchor">#</a></h1><p>学习了并查集，看了视频 <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=VJnUwsE4fWA"><br>花花酱 Disjoint-set/Union-find Forest - 刷题找工作 SP1</a> ，  <a target="_blank" rel="noopener" href="https://zxi.mytechroad.com/blog/data-structure/sp1-union-find-set/">博客文章</a><br>视频里面主要讲了 find 和 union 两个操作。<br>find 即找到节点的root。 对应路径压缩。 这里面有个点是，路径压缩是在find 的过程中进行的，如果不进行find，则不进行路径压缩。并且具体实现是通过递归实现。具体实现 我不太会用语言描述，主要是对递归的理解不深。<strong>递归算法需要加强下</strong></p>
+<p>union 对应分枝合并，将 rank 少的合并到 rank 多的。</p>
+<p>并查集 这个算法 在 <a target="_blank" rel="noopener" href="https://item.jd.com/11098789.html">算法(第4版) [Algorithms Fourth Edition]</a>  这本书里面是单独的一个章节 还需要详细学习下。。</p>
+<p>参考链接<br><a target="_blank" rel="noopener" href="https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf">https://www.cs.princeton.edu/courses/archive/spring13/cos423/lectures/UnionFind.pdf</a></p>
+<h1><span id="20200425">20200425</span><a href="#20200425" class="header-anchor">#</a></h1><p>根据数据输入规模估算时间复杂度，从而大概找到对应的算法。<br><img src="/media/15878003520657.jpg"></p>
+<p>树状数组 (没搞懂，找别的资料看一下)</p>
+<p><img src="/media/15878005034918.jpg"></p>
+<p>线程与进程</p>
+<p><img src="/media/15878051796647.jpg"></p>
+<h1><span id="20200512">20200512</span><a href="#20200512" class="header-anchor">#</a></h1><h2><span id="zheng-ze-biao-da-shi-ru-men">正则表达式入门</span><a href="#zheng-ze-biao-da-shi-ru-men" class="header-anchor">#</a></h2><p><code>A.*A</code> 字符串中有两个A<br><code>LLL</code> 字符串中有连续三个L<br><code>A.*A｜LLL</code> 字符串中有两个A 或者连续的三个L<br>正则表达式的优势 是 <em>可读性高</em>。</p>
+<h2><span id="dong-tai-gui-hua-ru-men">动态规划入门</span><a href="#dong-tai-gui-hua-ru-men" class="header-anchor">#</a></h2><p><img src="/media/15892969856518.jpg"><br>这个题目的思路是找到中间节点 如果前i的子串中间节点右边的串在字典中 ，那么前i的子串就是可分割的。<br>整个字符串是否可分割即 i 等于 字符串长度 时是否能找到中间节点右边的串在字典中。<br><img src="/media/15892976091142.jpg"></p>
+<p>这里先是在 s 前加了一个空字符。<br>然后构造了长度为n+1,初始值为0的数组，标记 s 前 i 长度的字符串是否可以被分割。<br>f[0] = 1 的意思是 s 是空字符串。</p>
+<p>两层循环。<br>外层循环是整个问题的规模。即s 的长度。<br>内层循环是子问题，j 从 0 到 i。如果j 右边到i 的字符串在字典中，即 s[0:i]是可以被分割的。就可以跳出内层循环了。<br>逐步扩大求解范围，通过解决子问题，从而得到整体问题的解。</p>
+<h1><span id="20180718-771-jewels-and-stones">20180718_771 Jewels and Stones</span><a href="#20180718-771-jewels-and-stones" class="header-anchor">#</a></h1><ul>
+<li><strong>question</strong></li>
+</ul>
+<p>You’re given strings <strong>J</strong> representing the types of stones that are jewels, and <strong>S</strong> representing the stones you have.  Each character in S is a type of stone you have.  You want to know how many of the stones you have are also jewels.</p>
+<p>The letters in J are guaranteed distinct, and all characters in J and S are letters. Letters are case sensitive, so “a” is considered a different type of stone from “A”.</p>
+<p>Example 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J &#x3D; &quot;aA&quot;, S &#x3D; &quot;aAAbbbb&quot;</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: J &#x3D; &quot;z&quot;, S &#x3D; &quot;ZZ&quot;</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>solution</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numJewelsInStones</span>(<span class="params">self, J, S</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type J: str</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">if</span> item <span class="keyword">in</span> J:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">                </span><br><span class="line">        <span class="keyword">return</span> count </span><br></pre></td></tr></table></figure>
+<hr>
+<h1><span id="20180719-709-to-lower-case">20180719_709 To Lower Case</span><a href="#20180719-709-to-lower-case" class="header-anchor">#</a></h1><ul>
+<li><strong>question</strong></li>
+</ul>
+<p>Implement function ToLowerCase() that has a string parameter str, and returns the same string in lowercase.</p>
+<p>Example 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Hello&quot;</span><br><span class="line">Output: &quot;hello&quot;</span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;here&quot;</span><br><span class="line">Output: &quot;here&quot;</span><br></pre></td></tr></table></figure>
+<p>Example 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LOVELY&quot;</span><br><span class="line">Output: &quot;lovely&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>solution</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toLowerCase</span>(<span class="params">self, <span class="built_in">str</span></span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type str: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        result = <span class="built_in">str</span>.lower()</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<hr>
+<h1><span id="20180720-595-big-countries">20180720_595 Big Countries</span><a href="#20180720-595-big-countries" class="header-anchor">#</a></h1><ul>
+<li><strong>question</strong></li>
+</ul>
+<p>There is a table <strong>World</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| name            | continent  | area       | population   | gdp           |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br><span class="line">| Afghanistan     | Asia       | 652230     | 25500100     | 20343000      |</span><br><span class="line">| Albania         | Europe     | 28748      | 2831741      | 12960000      |</span><br><span class="line">| Algeria         | Africa     | 2381741    | 37100000     | 188681000     |</span><br><span class="line">| Andorra         | Europe     | 468        | 78115        | 3712000       |</span><br><span class="line">| Angola          | Africa     | 1246700    | 20609294     | 100990000     |</span><br><span class="line">+-----------------+------------+------------+--------------+---------------+</span><br></pre></td></tr></table></figure>
+<p>A country is big if it has an area of bigger than 3 million square km or a population of more than 25 million.</p>
+<p>Write a SQL solution to output big countries’ name, population and area.</p>
+<p>For example, according to the above table, we should output:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| name         | population  | area         |</span><br><span class="line">+--------------+-------------+--------------+</span><br><span class="line">| Afghanistan  | 25500100    | 652230       |</span><br><span class="line">| Algeria      | 37100000    | 2381741      |</span><br><span class="line">+--------------+-------------+--------------+</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>solution</strong></li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># Write your MySQL query statement below</span><br><span class="line"><span class="keyword">select</span> name,population,area </span><br><span class="line"><span class="keyword">from</span> World</span><br><span class="line"><span class="keyword">where</span> population <span class="operator">&gt;</span> <span class="number">25000000</span> <span class="keyword">or</span> area <span class="operator">&gt;</span> <span class="number">3000000</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1><span id="20180721-804-unique-morse-code-words">20180721_804 Unique Morse Code Words</span><a href="#20180721-804-unique-morse-code-words" class="header-anchor">#</a></h1><ul>
+<li><strong>question</strong></li>
+</ul>
+<p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: “a” maps to “.-“, “b” maps to “-…”, “c” maps to “-.-.”, and so on.</p>
+<p>For convenience, the full table for the 26 letters of the English alphabet is given below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;.-&quot;,&quot;-...&quot;,&quot;-.-.&quot;,&quot;-..&quot;,&quot;.&quot;,&quot;..-.&quot;,&quot;--.&quot;,&quot;....&quot;,&quot;..&quot;,&quot;.---&quot;,&quot;-.-&quot;,&quot;.-..&quot;,&quot;--&quot;,&quot;-.&quot;,&quot;---&quot;,&quot;.--.&quot;,&quot;--.-&quot;,&quot;.-.&quot;,&quot;...&quot;,&quot;-&quot;,&quot;..-&quot;,&quot;...-&quot;,&quot;.--&quot;,&quot;-..-&quot;,&quot;-.--&quot;,&quot;--..&quot;]</span><br></pre></td></tr></table></figure>
+<p>Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. For example, “cab” can be written as “-.-.-….-“, (which is the concatenation “-.-.” + “-…” + “.-“). We’ll call such a concatenation, the transformation of a word.</p>
+<p>Return the number of different transformations among all words we have.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Example:</span><br><span class="line">Input: words &#x3D; [&quot;gin&quot;, &quot;zen&quot;, &quot;gig&quot;, &quot;msg&quot;]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">The transformation of each word is:</span><br><span class="line">&quot;gin&quot; -&gt; &quot;--...-.&quot;</span><br><span class="line">&quot;zen&quot; -&gt; &quot;--...-.&quot;</span><br><span class="line">&quot;gig&quot; -&gt; &quot;--...--.&quot;</span><br><span class="line">&quot;msg&quot; -&gt; &quot;--...--.&quot;</span><br></pre></td></tr></table></figure>
+<p>There are 2 different transformations, “–…-.” and “–…–.”.</p>
+<p><strong>Note:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. The length of words will be at most 100.</span><br><span class="line">2. Each words[i] will have length in range [1, 12].</span><br><span class="line">3. words[i] will only consist of lowercase letters.</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>solution</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniqueMorseRepresentations</span>(<span class="params">self, words</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        morse_code_dict = &#123;<span class="string">&quot;a&quot;</span>: <span class="string">&quot;.-&quot;</span>, <span class="string">&quot;b&quot;</span>: <span class="string">&quot;-...&quot;</span>, <span class="string">&quot;c&quot;</span>: <span class="string">&quot;-.-.&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;d&quot;</span>: <span class="string">&quot;-..&quot;</span>, <span class="string">&quot;e&quot;</span>: <span class="string">&quot;.&quot;</span>, <span class="string">&quot;f&quot;</span>: <span class="string">&quot;..-.&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;g&quot;</span>: <span class="string">&quot;--.&quot;</span>, <span class="string">&quot;h&quot;</span>: <span class="string">&quot;....&quot;</span>, <span class="string">&quot;i&quot;</span>: <span class="string">&quot;..&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;j&quot;</span>: <span class="string">&quot;.---&quot;</span>, <span class="string">&quot;k&quot;</span>: <span class="string">&quot;-.-&quot;</span>, <span class="string">&quot;l&quot;</span>: <span class="string">&quot;.-..&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;m&quot;</span>: <span class="string">&quot;--&quot;</span>, <span class="string">&quot;n&quot;</span>: <span class="string">&quot;-.&quot;</span>, <span class="string">&quot;o&quot;</span>: <span class="string">&quot;---&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;p&quot;</span>: <span class="string">&quot;.--.&quot;</span>, <span class="string">&quot;q&quot;</span>: <span class="string">&quot;--.-&quot;</span>, <span class="string">&quot;r&quot;</span>: <span class="string">&quot;.-.&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;s&quot;</span>: <span class="string">&quot;...&quot;</span>, <span class="string">&quot;t&quot;</span>: <span class="string">&quot;-&quot;</span>, <span class="string">&quot;u&quot;</span>: <span class="string">&quot;..-&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;v&quot;</span>: <span class="string">&quot;...-&quot;</span>, <span class="string">&quot;w&quot;</span>: <span class="string">&quot;.--&quot;</span>, <span class="string">&quot;x&quot;</span>: <span class="string">&quot;-..-&quot;</span>, \</span><br><span class="line">                           <span class="string">&quot;y&quot;</span>: <span class="string">&quot;-.--&quot;</span>, <span class="string">&quot;z&quot;</span>: <span class="string">&quot;--..&quot;</span>&#125;</span><br><span class="line">        morse_words = []</span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            morse_word = <span class="string">&#x27;&#x27;</span></span><br><span class="line">            <span class="keyword">for</span> item <span class="keyword">in</span> word:</span><br><span class="line">                morse_word = morse_word + morse_code_dict[item]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> morse_word <span class="keyword">not</span> <span class="keyword">in</span> morse_words:</span><br><span class="line">                count = count + <span class="number">1</span></span><br><span class="line">            morse_words.append(morse_word)</span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+<hr>
+<h1><span id="20180722-461-hamming-distance">20180722_461 Hamming Distance</span><a href="#20180722-461-hamming-distance" class="header-anchor">#</a></h1><ul>
+<li><strong>question</strong></li>
+</ul>
+<p>The Hamming distance between two integers is the number of positions at which the corresponding bits are different.</p>
+<p>Given two integers x and y, calculate the Hamming distance.</p>
+<p>Note:<br>0 ≤ x, y &lt; 231.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: x &#x3D; 1, y &#x3D; 4</span><br><span class="line"></span><br><span class="line">Output: 2</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">1   (0 0 0 1)</span><br><span class="line">4   (0 1 0 0)</span><br><span class="line">       ↑   ↑</span><br></pre></td></tr></table></figure>
+<p>The above arrows point to positions where the corresponding bits are different.</p>
+<ul>
+<li><strong>solution</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :type y: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        count = <span class="number">0</span></span><br><span class="line">        diff = x^y</span><br><span class="line">        <span class="keyword">while</span> diff &gt; <span class="number">0</span>:</span><br><span class="line">            count += diff &amp; <span class="number">1</span></span><br><span class="line">            diff &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/08/26/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk71hqvi0013fy4aff4t3pvt" data-title="算法学习笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -610,7 +726,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckk718x880005d64aemy1g4e6" data-title="redhat实习总结" class="article-share-link">Share</a>
+      <a data-url="https://franksma.github.io/2017/08/24/redhat%E5%AE%9E%E4%B9%A0%E6%80%BB%E7%BB%93/" data-id="ckk71hqvb000hfy4ag97x1vz0" data-title="redhat实习总结" class="article-share-link">Teilen</a>
       
       
       
@@ -624,20 +740,183 @@
 
 
   
+    <article id="post-数据结构学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2017-08-20T03:44:39.000Z" itemprop="datePublished">2017-08-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
 
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">数据结构学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="pai-xu-suan-fa">排序算法</span><a href="#pai-xu-suan-fa" class="header-anchor">#</a></h1><p>排序算法总的来说有 *<em>O(n</em>2)**  和 *<em>O(n</em>logn)*<em>时间复杂度的两种解法。<br>**O(n</em>2)*<em>的代表:<br>    - 选择排序<br>    - 插入排序<br>**O(n</em>logn)**的代表:<br>    - 归并排序<br>    - 快速排序</p>
+<h2><span id="xuan-ze-pai-xu">选择排序</span><a href="#xuan-ze-pai-xu" class="header-anchor">#</a></h2><p>时间复杂度为*<em>O(n</em>2)**，编码简单，易于实现。<br>从未排好序的元素中选出最小的元素加入到排好序的末尾。<br>简单实现:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">selectionSort</span><span class="params">(T arr[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i ++)&#123;</span><br><span class="line">        <span class="comment">// 保存当前要选出的最小元素的位置</span></span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = i + <span class="number">1</span> ; j &lt; n ; j ++ )</span><br><span class="line">            <span class="keyword">if</span>( arr[j] &lt; arr[minIndex] )</span><br><span class="line">                minIndex = j;</span><br><span class="line">        swap( arr[i] , arr[minIndex] );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2><span id="cha-ru-pai-xu">插入排序</span><a href="#cha-ru-pai-xu" class="header-anchor">#</a></h2><p>其中写法1和写法2相同。写法3的区别是使用赋值操作代替交换操作。<br>插入排序相对与选择排序的优点是<strong>可以提前结束内层循环</strong>，但是如果在数据量很大时，swap操作会消耗大量时间。<br>切记内层循环中不要使用swap。<br>即可以使用方法3进行优化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertionSort</span><span class="params">(T arr[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt; n ; i ++ ) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 寻找元素arr[i]合适的插入位置</span></span><br><span class="line">        <span class="comment">// 写法1</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = i ; j &gt; <span class="number">0</span> ; j-- )</span><br><span class="line">            <span class="keyword">if</span>( arr[j] &lt; arr[j<span class="number">-1</span>] )</span><br><span class="line">                swap( arr[j] , arr[j<span class="number">-1</span>] );</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 写法2</span></span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = i ; j &gt; <span class="number">0</span> &amp;&amp; arr[j] &lt; arr[j<span class="number">-1</span>] ; j -- )</span><br><span class="line">            swap( arr[j] , arr[j<span class="number">-1</span>] );</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 写法3</span></span><br><span class="line">        T e = arr[i];</span><br><span class="line">        <span class="keyword">int</span> j; <span class="comment">// j保存元素e应该插入的位置</span></span><br><span class="line">        <span class="keyword">for</span> (j = i; j &gt; <span class="number">0</span> &amp;&amp; arr[j<span class="number">-1</span>] &gt; e; j--)</span><br><span class="line">            arr[j] = arr[j<span class="number">-1</span>];</span><br><span class="line">        arr[j] = e;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">20000</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 测试1 一般测试</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Test for random array,size = &quot;</span>&lt;&lt;n&lt;&lt;<span class="string">&quot;, random range [0, &quot;</span>&lt;&lt;n&lt;&lt;<span class="string">&quot;]&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">int</span> *arr1 = SortTestHelper::generateRandomArray(n,<span class="number">0</span>,n);</span><br><span class="line">    <span class="keyword">int</span> *arr2 = SortTestHelper::copyIntArray(arr1, n);</span><br><span class="line"></span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Insertion Sort&quot;</span>, insertionSort,arr1,n);</span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Selection Sort&quot;</span>, selectionSort,arr2,n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span>[] arr1;</span><br><span class="line">    <span class="keyword">delete</span>[] arr2;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试2 有序性更强的测试</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Test for more ordered random array, size = &quot;</span>&lt;&lt;n&lt;&lt;<span class="string">&quot;, random range [0, 3]&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    arr1 = SortTestHelper::generateRandomArray(n,<span class="number">0</span>,<span class="number">3</span>);</span><br><span class="line">    arr2 = SortTestHelper::copyIntArray(arr1, n);</span><br><span class="line"></span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Insertion Sort&quot;</span>, insertionSort,arr1,n);</span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Selection Sort&quot;</span>, selectionSort,arr2,n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span>[] arr1;</span><br><span class="line">    <span class="keyword">delete</span>[] arr2;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试3 测试近乎有序的数组</span></span><br><span class="line">    <span class="keyword">int</span> swapTimes = <span class="number">100</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;Test for nearly ordered array, size = &quot;</span>&lt;&lt;n&lt;&lt;<span class="string">&quot;, swap time = &quot;</span>&lt;&lt;swapTimes&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    arr1 = SortTestHelper::generateNearlyOrderedArray(n,swapTimes);</span><br><span class="line">    arr2 = SortTestHelper::copyIntArray(arr1, n);</span><br><span class="line"></span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Insertion Sort&quot;</span>, insertionSort,arr1,n);</span><br><span class="line">    SortTestHelper::testSort(<span class="string">&quot;Selection Sort&quot;</span>, selectionSort,arr2,n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span>[] arr1;</span><br><span class="line">    <span class="keyword">delete</span>[] arr2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;内层循环使用赋值</span><br><span class="line">Test for random array, size &#x3D; 20000, random range [0, 20000]</span><br><span class="line">Insertion Sort : 0.265907 s</span><br><span class="line">Selection Sort : 0.411309 s</span><br><span class="line"></span><br><span class="line">Test for more ordered random array, size &#x3D; 20000, random range [0, 3]</span><br><span class="line">Insertion Sort : 0.197426 s</span><br><span class="line">Selection Sort : 0.43127 s</span><br><span class="line"></span><br><span class="line">Test for nearly ordered array, size &#x3D; 20000, swap time &#x3D; 100</span><br><span class="line">Insertion Sort : 0.004048 s</span><br><span class="line">Selection Sort : 0.417837 s</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;内层循环使用swap</span><br><span class="line">Test for random array, size &#x3D; 20000, random range [0, 20000]</span><br><span class="line">Insertion Sort : 0.557159 s</span><br><span class="line">Selection Sort : 0.414171 s</span><br><span class="line"></span><br><span class="line">Test for more ordered random array, size &#x3D; 20000, random range [0, 3]</span><br><span class="line">Insertion Sort : 0.412834 s</span><br><span class="line">Selection Sort : 0.430294 s</span><br><span class="line"></span><br><span class="line">Test for nearly ordered array, size &#x3D; 20000, swap time &#x3D; 100</span><br><span class="line">Insertion Sort : 0.008028 s</span><br><span class="line">Selection Sort : 0.432235 s</span><br></pre></td></tr></table></figure>
+<p>可以看到即使有提前结束循环的加成，但是由于swap操作相当于3次赋值操作，即导致插入排序相对于选择排序并不存在优势。</p>
+<h2><span id="gui-bing-pai-xu">归并排序</span><a href="#gui-bing-pai-xu" class="header-anchor">#</a></h2><p>归并排序的思想是首先将左边的数据和右边的数据分别排序，然后进行归并，在两边的数据进行排序的过程和这个过程一样分为两个部分然后进行排序和归并。这是一个递归的过程。归并的操作时选出两个部分小的加入到排好序的序列中。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>  T&gt;</span><br><span class="line"><span class="keyword">void</span> __merge(T arr[], <span class="keyword">int</span> l, <span class="keyword">int</span> mid, <span class="keyword">int</span> r)&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    T *aux = <span class="keyword">new</span> T[r-l+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> i = l, j = mid+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span> k = l ; k &lt;= r; k ++ )&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( i &gt; mid )&#123;  <span class="comment">// 如果左半部分元素已经全部处理完毕</span></span><br><span class="line">            arr[k] = aux[j-l]; j ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( j &gt; r )&#123;  <span class="comment">// 如果右半部分元素已经全部处理完毕</span></span><br><span class="line">            arr[k] = aux[i-l]; i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>( aux[i-l] &lt; aux[j-l] ) &#123;  <span class="comment">// 左半部分所指元素 &lt; 右半部分所指元素</span></span><br><span class="line">            arr[k] = aux[i-l]; i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;  <span class="comment">// 左半部分所指元素 &gt;= 右半部分所指元素</span></span><br><span class="line">            arr[k] = aux[j-l]; j ++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span>[] aux;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 递归使用归并排序,对arr[l...r]的范围进行排序</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">void</span> __mergeSort(T arr[], <span class="keyword">int</span> l, <span class="keyword">int</span> r)&#123;</span><br><span class="line">    <span class="comment">// 处理递归到底的情况</span></span><br><span class="line">    <span class="keyword">if</span>( l &gt;= r )</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// 否则进行一次归并排序</span></span><br><span class="line">    <span class="keyword">int</span> mid = (l+r)/<span class="number">2</span>;</span><br><span class="line">    __mergeSort(arr, l, mid);</span><br><span class="line">    __mergeSort(arr, mid+<span class="number">1</span>, r);</span><br><span class="line">    __merge(arr, l, mid, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(T arr[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    __mergeSort( arr , <span class="number">0</span> , n<span class="number">-1</span> );</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;测试结果</span><br><span class="line">Test for random array, size &#x3D; 100000, random range [0, 100000]</span><br><span class="line">Insertion Sort : 6.43724 s</span><br><span class="line">Merge Sort : 0.031772 s</span><br><span class="line"></span><br><span class="line">Test for nearly ordered array, size &#x3D; 100000, swap time &#x3D; 10</span><br><span class="line">Insertion Sort : 0.002678 s</span><br><span class="line">Merge Sort : 0.024516 s</span><br></pre></td></tr></table></figure>
+<h3><span id="you-hua-fang-fa">优化方法</span><a href="#you-hua-fang-fa" class="header-anchor">#</a></h3><ol>
+<li>判断arr[mid]和arr[mid]的大小，当arr[mid]&lt;arr[mid+1]说明已经有序，不必进行merge。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">__mergeSort(arr, l, mid);</span><br><span class="line">__mergeSort(arr, mid+<span class="number">1</span>, r);</span><br><span class="line"><span class="keyword">if</span>(arr[mid]&gt;arr[mid+<span class="number">1</span>])</span><br><span class="line">    __merge(arr, l, mid, r);</span><br></pre></td></tr></table></figure></li>
+<li>当有巨量数据时，不将数组分割成很小的部分，例如当数据近乎有序时，插入排序的时间复杂度会降低到O(n),可利用这一特点进行优化。<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( r-l&lt;=<span class="number">16</span> )&#123;</span><br><span class="line">    insertionSort(arr,l,r);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 使用1和2进行优化的结果</span><br><span class="line">Test for random array, size &#x3D; 100000, random range [0, 100000]</span><br><span class="line">Insertion Sort : 6.94346 s</span><br><span class="line">Merge Sort : 0.020683 s</span><br><span class="line"></span><br><span class="line">Test for nearly ordered array, size &#x3D; 100000, swap time &#x3D; 10</span><br><span class="line">Insertion Sort : 0.003424 s</span><br><span class="line">Merge Sort : 0.00362 s</span><br></pre></td></tr></table></figure>
+<h2><span id="kuai-su-pai-xu">快速排序</span><a href="#kuai-su-pai-xu" class="header-anchor">#</a></h2></li>
+</ol>
+<h2><span id="dui-pai-xu">堆排序</span><a href="#dui-pai-xu" class="header-anchor">#</a></h2><h2><span id="fu-zhu-han-shu">辅助函数</span><a href="#fu-zhu-han-shu" class="header-anchor">#</a></h2><p>辅助函数用于生成随机序列和检测排序结果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> SortTestHelper &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成有n个元素的随机数组,每个元素的随机范围为[rangeL, rangeR]</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> *<span class="title">generateRandomArray</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> range_l, <span class="keyword">int</span> range_r)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> *arr = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line"></span><br><span class="line">        srand(time(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            arr[i] = rand() % (range_r - range_l + <span class="number">1</span>) + range_l;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成一个近乎有序的数组</span></span><br><span class="line">    <span class="comment">// 首先生成一个含有[0...n-1]的完全有序数组, 之后随机交换swapTimes对数据</span></span><br><span class="line">    <span class="comment">// swapTimes定义了数组的无序程度:</span></span><br><span class="line">    <span class="comment">// swapTimes == 0 时, 数组完全有序</span></span><br><span class="line">    <span class="comment">// swapTimes 越大, 数组越趋向于无序</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> *<span class="title">generateNearlyOrderedArray</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> swapTimes)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> *arr = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; n ; i ++ )</span><br><span class="line">            arr[i] = i;</span><br><span class="line"></span><br><span class="line">        srand(time(<span class="literal">NULL</span>));</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; swapTimes ; i ++ )&#123;</span><br><span class="line">            <span class="keyword">int</span> posx = rand()%n;</span><br><span class="line">            <span class="keyword">int</span> posy = rand()%n;</span><br><span class="line">            swap( arr[posx] , arr[posy] );</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝整型数组a中的所有元素到一个新的数组, 并返回新的数组</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> *<span class="title">copyIntArray</span><span class="params">(<span class="keyword">int</span> a[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> *arr = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">        <span class="comment">//* 在VS中, copy函数被认为是不安全的, 请大家手动写一遍for循环:)</span></span><br><span class="line">        copy(a, a+n, arr);</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 打印arr数组的所有内容</span></span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printArray</span><span class="params">(T arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; arr[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断arr数组是否有序</span></span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isSorted</span><span class="params">(T arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++)</span><br><span class="line">            <span class="keyword">if</span> (arr[i] &gt; arr[i + <span class="number">1</span>])</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 测试sort排序算法排序arr数组所得到结果的正确性和算法运行时间</span></span><br><span class="line">    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">testSort</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;sortName, <span class="keyword">void</span> (*sort)(T[], <span class="keyword">int</span>), T arr[], <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">clock_t</span> startTime = clock();</span><br><span class="line">        sort(arr, n);</span><br><span class="line">        <span class="keyword">clock_t</span> endTime = clock();</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; sortName &lt;&lt; <span class="string">&quot; : &quot;</span> &lt;&lt; <span class="keyword">double</span>(endTime - startTime) / CLOCKS_PER_SEC &lt;&lt; <span class="string">&quot; s&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        assert(isSorted(arr, n));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>#查找算法</p>
+<h2><span id="er-fen-cha-zhao-fa">二分查找法</span><a href="#er-fen-cha-zhao-fa" class="header-anchor">#</a></h2><ul>
+<li>时间复杂度<strong>O(log(n))</strong></li>
+<li>输入的数据必须<strong>有序</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(T arr[], <span class="keyword">int</span> n, T target)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 在arr[l...r]之中查找target</span></span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, r = n<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span>(l &lt;= r)&#123;</span><br><span class="line">        <span class="comment">//int mid = (l+r)/2;//这里有溢出的可能</span></span><br><span class="line">        <span class="keyword">int</span> mid = l + (r-l)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(arr[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        <span class="keyword">if</span>(arr[mid]&lt; target)</span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// while( l &lt;= r )&#123;</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">//     //int mid = (l + r)/2;</span></span><br><span class="line">    <span class="comment">//     // 防止极端情况下的整形溢出，使用下面的逻辑求出mid</span></span><br><span class="line">    <span class="comment">//     int mid = l + (r-l)/2;</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">//     if( arr[mid] == target )</span></span><br><span class="line">    <span class="comment">//         return mid;</span></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">    <span class="comment">//     if( arr[mid] &gt; target )</span></span><br><span class="line">    <span class="comment">//         r = mid - 1;</span></span><br><span class="line">    <span class="comment">//     else</span></span><br><span class="line">    <span class="comment">//         l = mid + 1;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/08/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckk71hqv8000dfy4a9r0jh0xw" data-title="数据结构学习笔记" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-The-Other-Side-of-Hope" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/08/17/The-Other-Side-of-Hope/" class="article-date">
+  <time class="dt-published" datetime="2017-08-17T03:01:11.000Z" itemprop="datePublished">2017-08-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%84%9F%E6%83%B3/">感想</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2017/08/17/The-Other-Side-of-Hope/">The Other Side of Hope</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1><span id="the-other-side-of-hope">The Other Side of Hope</span><a href="#the-other-side-of-hope" class="header-anchor">#</a></h1><h2><span id="zen-me-zhao-dao-zhe-bu-dian-ying-de">怎么找到这部电影的</span><a href="#zen-me-zhao-dao-zhe-bu-dian-ying-de" class="header-anchor">#</a></h2><p>大家都在看权利的游戏，我没看过，好像自己丢失了许多兴趣。</p>
+<p>但是我想看点东西，缓解压抑的心情。</p>
+<p>所以在学校BT上乱翻，看吸引我的标题，就翻到了这部电影</p>
+<h2><span id="dian-ying-xin-xi">电影信息</span><a href="#dian-ying-xin-xi" class="header-anchor">#</a></h2><p>资源名称：Toivon tuolla puolen（希望的另一面， The Other Side of Hope）<br>主要演员：韦勒·维坦恩，卡蒂·奥廷宁，汤米·柯贝拉，什万·哈吉<br>电影类型：剧情，喜剧<br>产　　地：芬兰，德国<br>导　　演：阿基·考里斯马基<br>发布时间：2017<br>豆瓣评分：8<br>豆瓣链接：<a target="_blank" rel="noopener" href="https://movie.douban.com/subject/26678509/">https://movie.douban.com/subject/26678509/</a><br>简介：描述叙利亚难民为寻找避难之处来到芬兰赫尔辛基，与当地人结识的过程。</p>
+<h2><span id="dian-ying-ju-qing">电影剧情</span><a href="#dian-ying-ju-qing" class="header-anchor">#</a></h2><p>里面有两个男人，一个是叙利亚难民 ，一个是芬兰商人。</p>
+<p>叙利亚难民，一路从他的祖国逃难到芬兰，走路穿越国境，通过蛇头偷渡，最后在运煤轮船的煤堆里到达芬兰。<br>下船后去火车站洗掉了身上的煤渣。找当地的警察局办理避难。最后在一个救助中心落脚。</p>
+<p>叙利亚难民有个妹妹在偷渡过程中走散了。他非常想找到他的妹妹，一直没在一个国家停留。丧失了信仰。在各个国家东躲西藏。<br>受尽欺凌。</p>
+<p>芬兰商人是做衬衣生意的，夫妻感情走到尽头。他净身出户，找以前的商业伙伴以半价卖出了库存的所有衬衣。<br>然后去赌场，在最后一场和对手all in ，赢了对手，去租下了一个餐馆。芬兰的餐馆居然可以直接上罐头。</p>
+<p>叙利亚难民一直在尝试找他的妹妹。</p>
+<p>他的避难申请没有通过，当局会将他遣返。</p>
+<p>遣返的前一天，他在新闻上看见叙利亚的还是一片战乱。</p>
+<p>第二天一早，警察局的人来了，救护中心的护士好心帮他让他逃跑了。</p>
+<p>这样他在芬兰就是黑户了，没有正式身份，但是好歹在这留下来了。</p>
+<p>芬兰商人的餐馆员工在后厨养了一条狗叫科斯塔恩，商人要把它扔出去，最迟留到明天早上。</p>
+<p>两个人的交集在这时产生了。</p>
+<p>难民睡在商人餐馆的垃圾堆里，两人产生了争执，互相揍了一拳，难民倒下了。<br>后来商人请他在店里做工，并且把自己的以前衬衣仓库给他住下了，本来是让他住餐馆停运的冷库。</p>
+<p>这部电影有德国的古板味道。</p>
+<p>警察来餐馆检查卫生和消防。以检查不合格，命令整改。</p>
+<p>老板找黑客给难民制作了假身份。一千块钱。假身份在警察那可用。</p>
+<p>老板找员工出主意商量改善经营，提议做日本寿司。</p>
+<p>老板在书店买了几本东方的书籍就开始做了。很认真的做寿司。</p>
+<p>店员的态度很严谨，但是材料准备不足，把鲱鱼拿了出来。对，就是那个鲱鱼罐头，客人当然都走了。</p>
+<p>还是改回了买肉丸。加上了乐队和跳舞。</p>
+<p>芬兰的生活可能是难民的hope，但是商人的hope在哪。</p>
+<p>叙利亚难民的伊拉克朋友告诉他，他的妹妹找到了，在立陶宛的难民中心。</p>
+<p>老板多了个心眼，找到货轮的船长让他带消息去立陶宛，并且帮他把妹妹带回了芬兰。</p>
+<p>故事到这里就快要结束了。</p>
+<p>难民想要他的妹妹和他一样伪造身份在芬兰留下来。但是她不答应。他找救护中心帮过他的护士将他的妹妹带到警察局。</p>
+<p>之前找过他麻烦的地痞，在他住所的门前捅了他一刀。</p>
+<p>商人回来找他的妻子，重归于好。</p>
+<p>在回到家里的时候，看到难民住的仓库里没人，并且地上有血迹。</p>
+<p>难民叫哈立德。最后和那个叫科斯塔恩的狗生活在一起。</p>
+<p>他们的Hope都在一步步的实现，虽然有磨难。</p>
+<h2><span id="gan-xiang">感想</span><a href="#gan-xiang" class="header-anchor">#</a></h2><p>没什么感想。</p>
+<p>只是想转移下自己的注意力，所以一边看电影，一边写下了这些。</p>
+<p>慢慢来。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franksma.github.io/2017/08/17/The-Other-Side-of-Hope/" data-id="ckk71hqv50006fy4a59qq88xe" data-title="The Other Side of Hope" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
+  </nav>
 
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%84%9F%E6%83%B3/">感想</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%93%8D%E4%BD%9C/">操作</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C++</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rust/" rel="tag">Rust</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SIMTrace/" rel="tag">SIMTrace</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redhat/" rel="tag">redhat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/" rel="tag">socket</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" rel="tag">比特币</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%95%E4%B8%9A/" rel="tag">毕业</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%94%B5%E5%BD%B1/" rel="tag">电影</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
     </div>
   </div>
 
@@ -647,16 +926,16 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/redhat/" style="font-size: 10px;">redhat</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+      <a href="/tags/C/" style="font-size: 10px;">C++</a> <a href="/tags/Rust/" style="font-size: 10px;">Rust</a> <a href="/tags/SIMTrace/" style="font-size: 10px;">SIMTrace</a> <a href="/tags/linux/" style="font-size: 20px;">linux</a> <a href="/tags/redhat/" style="font-size: 10px;">redhat</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a> <a href="/tags/%E6%AF%94%E7%89%B9%E5%B8%81/" style="font-size: 10px;">比特币</a> <a href="/tags/%E6%AF%95%E4%B8%9A/" style="font-size: 10px;">毕业</a> <a href="/tags/%E7%94%B5%E5%BD%B1/" style="font-size: 10px;">电影</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
     </div>
   </div>
 
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li></ul>
     </div>
   </div>
 
@@ -664,13 +943,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2021/01/18/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">算法学习笔记</a>
-          </li>
         
           <li>
             <a href="/2021/01/17/Rust-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Rust 学习笔记</a>
@@ -678,6 +953,10 @@
         
           <li>
             <a href="/2018/03/09/%E6%AF%95%E4%B8%9A%E7%AD%94%E8%BE%A9%E5%AE%8C%E6%88%90/">毕业答辩完成</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/19/%E7%B2%BE%E9%80%9A%E6%AF%94%E7%89%B9%E5%B8%81%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">精通比特币阅读笔记</a>
           </li>
         
           <li>
