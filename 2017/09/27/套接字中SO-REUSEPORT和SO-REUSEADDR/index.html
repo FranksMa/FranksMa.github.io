@@ -6,12 +6,12 @@
   
   <title>套接字中SO_REUSEPORT和SO_REUSEADDR | FranksMa BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Q#可否多个进程监听同一个端口 A#可通过两种方式在同一个端口上监听  设置 SO_REUSEPORT 设置 SO_REUSEADDR  SO_REUSEPORT#测试代码： 1234567891011121314import socketimport osSO_REUSEPORT &#x3D; 15s &#x3D; socket.socket(socket.AF_INET, socket.SOCK_STREAM)s">
+  <meta name="description" content="#Q可否多个进程监听同一个端口 #A可通过两种方式在同一个端口上监听  设置 SO_REUSEPORT 设置 SO_REUSEADDR  #SO_REUSEPORT测试代码： 1234567891011121314import socketimport osSO_REUSEPORT &#x3D; 15s &#x3D; socket.socket(socket.AF_INET, socket.SOCK_STREAM)s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="套接字中SO_REUSEPORT和SO_REUSEADDR">
 <meta property="og:url" content="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/index.html">
 <meta property="og:site_name" content="FranksMa BLOG">
-<meta property="og:description" content="Q#可否多个进程监听同一个端口 A#可通过两种方式在同一个端口上监听  设置 SO_REUSEPORT 设置 SO_REUSEADDR  SO_REUSEPORT#测试代码： 1234567891011121314import socketimport osSO_REUSEPORT &#x3D; 15s &#x3D; socket.socket(socket.AF_INET, socket.SOCK_STREAM)s">
+<meta property="og:description" content="#Q可否多个进程监听同一个端口 #A可通过两种方式在同一个端口上监听  设置 SO_REUSEPORT 设置 SO_REUSEADDR  #SO_REUSEPORT测试代码： 1234567891011121314import socketimport osSO_REUSEPORT &#x3D; 15s &#x3D; socket.socket(socket.AF_INET, socket.SOCK_STREAM)s">
 <meta property="og:locale">
 <meta property="og:image" content="https://franksma.github.io/media/15064446169076.jpg">
 <meta property="og:image" content="https://franksma.github.io/media/15064447308245.jpg">
@@ -105,16 +105,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1><span id="q">Q</span><a href="#q" class="header-anchor">#</a></h1><p>可否多个进程监听同一个端口</p>
-<h1><span id="a">A</span><a href="#a" class="header-anchor">#</a></h1><p>可通过两种方式在同一个端口上监听</p>
+        <h1><a href="#q" class="header-anchor">#</a><span id="q">Q</span></h1><p>可否多个进程监听同一个端口</p>
+<h1><a href="#a" class="header-anchor">#</a><span id="a">A</span></h1><p>可通过两种方式在同一个端口上监听</p>
 <ul>
 <li>设置 <strong>SO_REUSEPORT</strong></li>
 <li>设置 <strong>SO_REUSEADDR</strong></li>
 </ul>
-<h2><span id="so-reuseport">SO_REUSEPORT</span><a href="#so-reuseport" class="header-anchor">#</a></h2><p>测试代码：</p>
+<h2><a href="#so-reuseport" class="header-anchor">#</a><span id="so-reuseport">SO_REUSEPORT</span></h2><p>测试代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">SO_REUSEPORT = <span class="number">15</span></span><br><span class="line">s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</span><br><span class="line">s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, <span class="number">1</span>)</span><br><span class="line">s.bind((<span class="string">&#x27;&#x27;</span>, <span class="number">10000</span>))</span><br><span class="line">s.listen(<span class="number">1</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    conn, addr = s.accept()</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;Connected to %d \t addr: %s &quot;</span> % (os.getpid(),addr)</span><br><span class="line">    <span class="comment">#data = conn.recv(1024)</span></span><br><span class="line">    conn.send(<span class="string">&#x27;Connected to &#123;&#125; \n&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    conn.close()</span><br></pre></td></tr></table></figure>
 <p>这个参数在 MacOS 和 Linux 上被设置后，<strong>效果是不一样</strong>的。</p>
-<h3><span id="zai-macos-shang-de-xiao-guo">在 MacOS 上的效果</span><a href="#zai-macos-shang-de-xiao-guo" class="header-anchor">#</a></h3><ul>
+<h3><a href="#zai-macos-shang-de-xiao-guo" class="header-anchor">#</a><span id="zai-macos-shang-de-xiao-guo">在 MacOS 上的效果</span></h3><ul>
 <li>能无冲突的开启两个不同的进程</li>
 </ul>
 <p><img src="/media/15064446169076.jpg"><br>其中<strong>PID 23601</strong> 是第一个开启，<strong>PID 23696</strong> 是第二个开启的。</p>
@@ -126,16 +126,16 @@
 <li>并且可以在不同用户下运行该程序</li>
 </ul>
 <p><img src="/media/15064452264993.jpg"><br>接入顺序还是和前面的相同，先开启的进程会去接受请求，后开启的进程只有在先开启的进程结束后才能接受请求。</p>
-<h3><span id="zai-linux-shang-de-xiao-guo">在Linux上的效果</span><a href="#zai-linux-shang-de-xiao-guo" class="header-anchor">#</a></h3><ul>
+<h3><a href="#zai-linux-shang-de-xiao-guo" class="header-anchor">#</a><span id="zai-linux-shang-de-xiao-guo">在Linux上的效果</span></h3><ul>
 <li><p>与MacOS不同之处在于，Linux 会<strong>随机</strong>（可能是某种算法）选择进程去接受请求。<br><img src="/media/15064456629605.jpg"><br><img src="/media/15064456973224.jpg"><br>这样的好处是，上层程序可以将负载均衡完全交给系统层去完成。</p>
 </li>
 <li><p>在用不同账户去尝试运行这个程序时会报错<br><img src="/media/15064460759272.jpg"></p>
 </li>
 </ul>
 <p>这符合参考文档中的说明，linux 可以让多进程重用端口，但是这些进程必须是同一个账户。显然 Mac OS 的相关机制不同。</p>
-<h3><span id="ling-wai">另外</span><a href="#ling-wai" class="header-anchor">#</a></h3><p>参考文档中说 <strong>SO_REUSEPORT</strong>  是在<strong>Linux 3.9</strong> 之后加入的。<br>我的实验环境的内核版本为<strong>2.6</strong><br><img src="/media/15064464767608.jpg"></p>
+<h3><a href="#ling-wai" class="header-anchor">#</a><span id="ling-wai">另外</span></h3><p>参考文档中说 <strong>SO_REUSEPORT</strong>  是在<strong>Linux 3.9</strong> 之后加入的。<br>我的实验环境的内核版本为<strong>2.6</strong><br><img src="/media/15064464767608.jpg"></p>
 <p>学校网关用的是 NAT 而不是 NAPT 只对 IP 地址进行了转换，<strong>端口号不变</strong>。</p>
-<h1><span id="reference">reference</span><a href="#reference" class="header-anchor">#</a></h1><blockquote>
+<h1><a href="#reference" class="header-anchor">#</a><span id="reference">reference</span></h1><blockquote>
 <p><a target="_blank" rel="noopener" href="http://blog.csdn.net/Yaokai_AssultMaster/article/details/68951150">http://blog.csdn.net/Yaokai_AssultMaster/article/details/68951150</a></p>
 </blockquote>
 <blockquote>
@@ -148,7 +148,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" data-id="ckk71hqva000ffy4a0nhu0k1p" data-title="套接字中SO_REUSEPORT和SO_REUSEADDR" class="article-share-link">Teilen</a>
+      <a data-url="https://franksma.github.io/2017/09/27/%E5%A5%97%E6%8E%A5%E5%AD%97%E4%B8%ADSO-REUSEPORT%E5%92%8CSO-REUSEADDR/" data-id="ckk71ktnh000hia4a3ems4ax8" data-title="套接字中SO_REUSEPORT和SO_REUSEADDR" class="article-share-link">Teilen</a>
       
       
       

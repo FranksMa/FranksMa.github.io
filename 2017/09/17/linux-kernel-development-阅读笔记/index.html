@@ -6,12 +6,12 @@
   
   <title>linux kernel development 阅读笔记 | FranksMa BLOG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="第三章 进程管理#什么是进程# Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
+  <meta name="description" content="#第三章 进程管理#什么是进程 Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux kernel development 阅读笔记">
 <meta property="og:url" content="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="FranksMa BLOG">
-<meta property="og:description" content="第三章 进程管理#什么是进程# Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
+<meta property="og:description" content="#第三章 进程管理#什么是进程 Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.  对 linux 来说 ，thread 和 proce">
 <meta property="og:locale">
 <meta property="og:image" content="https://franksma.github.io/media/15056646399749.jpg">
 <meta property="og:image" content="https://franksma.github.io/media/15056625632416.jpg">
@@ -99,7 +99,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1><span id="di-san-zhang-jin-cheng-guan-li">第三章 进程管理</span><a href="#di-san-zhang-jin-cheng-guan-li" class="header-anchor">#</a></h1><h2><span id="shi-me-shi-jin-cheng">什么是进程</span><a href="#shi-me-shi-jin-cheng" class="header-anchor">#</a></h2><blockquote>
+        <h1><a href="#di-san-zhang-jin-cheng-guan-li" class="header-anchor">#</a><span id="di-san-zhang-jin-cheng-guan-li">第三章 进程管理</span></h1><h2><a href="#shi-me-shi-jin-cheng" class="header-anchor">#</a><span id="shi-me-shi-jin-cheng">什么是进程</span></h2><blockquote>
 <p>Linux has a unique implementation of threads: It does not differentiate between threads and processes. To Linux, a thread is just a special kind of process.</p>
 </blockquote>
 <p>对 linux 来说 ，thread 和 process 并没有区别。<br>thread 只是特殊的 process</p>
@@ -116,11 +116,11 @@
 <p>Virtual memory is covered in Chapter 12, “Memory Management.” </p>
 </blockquote>
 <p>对 process 来说， process 好像独占cpu 和 memory。</p>
-<h2><span id="jin-cheng-miao-shu-fu">进程描述符</span><a href="#jin-cheng-miao-shu-fu" class="header-anchor">#</a></h2><h3><span id="shi-me-shi-jin-cheng-miao-shu-fu">什么是进程描述符</span><a href="#shi-me-shi-jin-cheng-miao-shu-fu" class="header-anchor">#</a></h3><blockquote>
+<h2><a href="#jin-cheng-miao-shu-fu" class="header-anchor">#</a><span id="jin-cheng-miao-shu-fu">进程描述符</span></h2><h3><a href="#shi-me-shi-jin-cheng-miao-shu-fu" class="header-anchor">#</a><span id="shi-me-shi-jin-cheng-miao-shu-fu">什么是进程描述符</span></h3><blockquote>
 <p>The task_struct is a relatively large data structure, at around 1.7 kilobytes on a 32-bit machine. This size, however, is quite small considering that the structure contains all the information that the kernel has and needs about a process. The process descriptor contains the data that describes the executing program—open files, the process’s address space, pending signals, the process’s state, and much more.</p>
 </blockquote>
 <p><img src="/media/15056646399749.jpg"></p>
-<h3><span id="jin-cheng-miao-shu-fu-fang-zai-na-li">进程描述符放在那里</span><a href="#jin-cheng-miao-shu-fu-fang-zai-na-li" class="header-anchor">#</a></h3><blockquote>
+<h3><a href="#jin-cheng-miao-shu-fu-fang-zai-na-li" class="header-anchor">#</a><span id="jin-cheng-miao-shu-fu-fang-zai-na-li">进程描述符放在那里</span></h3><blockquote>
 <p>The kernel stores the list of processes in a circular doubly linked list called the task list.</p>
 </blockquote>
 <p>在kernel中 进程描述符存储在环形双向链表（task list）中。</p>
@@ -143,7 +143,7 @@
 </blockquote>
 <p>x86 架构存储的是 <strong>thread_info</strong> &lt;<code>The thread_info structure is defined on x86 in &lt;include/asm-x86_64/thread_info.h&gt;</code>&gt;</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">thread_info</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">task_struct</span>	*<span class="title">task</span>;</span><span class="comment">// a point to pd</span></span><br><span class="line">	<span class="comment">/* main task structure */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">exec_domain</span>	*<span class="title">exec_domain</span>;</span>	<span class="comment">/* execution domain */</span></span><br><span class="line">	__u32			flags;		<span class="comment">/* low level flags */</span></span><br><span class="line">	__u32			status;		<span class="comment">/* thread synchronous flags */</span></span><br><span class="line">	__u32			cpu;		<span class="comment">/* current CPU */</span></span><br><span class="line">	<span class="keyword">int</span> 			preempt_count;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">mm_segment_t</span>		addr_limit;	</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">restart_block</span>    <span class="title">restart_block</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2><span id="jin-cheng-zhuang-tai">进程状态</span><a href="#jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><p>pd 结构体中的 状态变量</p>
+<h2><a href="#jin-cheng-zhuang-tai" class="header-anchor">#</a><span id="jin-cheng-zhuang-tai">进程状态</span></h2><p>pd 结构体中的 状态变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatile long state;	&#x2F;* -1 unrunnable, 0 runnable, &gt;0 stopped *&#x2F;</span><br></pre></td></tr></table></figure>
 <p>一共<strong>5</strong>种 </p>
 <ul>
@@ -166,7 +166,7 @@
 <li><p>__TASK_STOPPED</p>
 </li>
 </ul>
-<h2><span id="ru-he-gai-bian-jin-cheng-zhuang-tai">如何改变进程状态</span><a href="#ru-he-gai-bian-jin-cheng-zhuang-tai" class="header-anchor">#</a></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set_task_state(task, state);        <span class="comment">/* set task &#x27;task&#x27; to state &#x27;state&#x27; */</span></span><br></pre></td></tr></table></figure>
+<h2><a href="#ru-he-gai-bian-jin-cheng-zhuang-tai" class="header-anchor">#</a><span id="ru-he-gai-bian-jin-cheng-zhuang-tai">如何改变进程状态</span></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set_task_state(task, state);        <span class="comment">/* set task &#x27;task&#x27; to state &#x27;state&#x27; */</span></span><br></pre></td></tr></table></figure>
 
 <p>在linux/sched.h 中set_task_state函数 定义为 set_mb </p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> set_task_state(tsk, state_value)		\</span></span><br><span class="line">	set_mb((tsk)-&gt;state, (state_value))</span><br></pre></td></tr></table></figure>
@@ -181,11 +181,11 @@
 <p>include/asm-ppc/system.h</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define set_mb(var, value)	do &#123; var &#x3D; value; mb(); &#125; while (0)</span><br></pre></td></tr></table></figure>
-<h2><span id="jin-cheng-shang-xia-wen">进程上下文</span><a href="#jin-cheng-shang-xia-wen" class="header-anchor">#</a></h2>
+<h2><a href="#jin-cheng-shang-xia-wen" class="header-anchor">#</a><span id="jin-cheng-shang-xia-wen">进程上下文</span></h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk71hqv7000afy4afkih8cog" data-title="linux kernel development 阅读笔记" class="article-share-link">Teilen</a>
+      <a data-url="https://franksma.github.io/2017/09/17/linux-kernel-development-%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" data-id="ckk71ktnf000dia4a31modovv" data-title="linux kernel development 阅读笔记" class="article-share-link">Teilen</a>
       
       
       
